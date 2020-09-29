@@ -1,0 +1,39 @@
+ion-content{
+    max-height: 200px;
+    .image-box{
+        margin: 0 auto;
+        height: 150px;
+        width: 150px;
+        .image{
+            height: 100%;
+            background-color: blue;
+            border-radius: 100%;
+            // When Image is Available
+            img{
+                border-radius: 100%;
+            }
+            // When Image is not Available
+            .camera-icon{
+                font-size: 8em;
+                color: #fff;
+                position: absolute;
+                margin: 9px;
+            }
+            .add-icon-parent{
+                height: 100%;
+                .add-icon{
+                    font-size: 3em;
+                    color: #fff;
+                    background-color: #224afb;
+                    position: relative;
+                    margin: 9px;
+                    bottom: 0px;
+                    left: 89px;
+                    top: 90px;
+                    border-radius: 100%;
+                    box-shadow: 1px 1px 1px 1px #00000082;
+                }
+            }
+        }
+    }
+}

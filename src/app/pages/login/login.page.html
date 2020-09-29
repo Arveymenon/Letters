@@ -1,0 +1,10 @@
+<ion-content class="displayContents">
+  <div class="login-form">
+      <app-input *ngIf="loginStage == 1" [validators]="emailValidators" [control]="email" placeholder="Email"></app-input>
+
+      <app-input *ngIf="loginStage == 2" [validators]="otpValidator" [control]="otp" max="6" placeholder="OTP"></app-input>
+      <p class="ion-text-end" *ngIf="loginStage == 2" (click)="resendOtp()">Resend OTP</p>
+      
+      <ion-button (click)="login()" color="primary" expand="block">{{ loginStage == 1 ? 'Send OTP' : 'Submit' }}</ion-button>
+    </div>
+</ion-content>

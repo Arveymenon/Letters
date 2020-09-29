@@ -1,0 +1,5 @@
+<ion-content class="displayContents">
+  <app-user-details [value]='UserDetails' (setUserDetails)="setUserDetails($event)"></app-user-details>
+  <app-profile-details (setProfileDetails)="setProfileDetails($event)"></app-profile-details>
+  <ion-button color="primary" expand="block" (click)="updateProfile()">Submit</ion-button>
+</ion-content>

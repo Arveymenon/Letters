@@ -1,0 +1,11 @@
+<app-select placeholder="Interest" multiple="true"
+ [control]="selectControl" [options]="interests" [key]="key" [value]="value">
+</app-select>
+<div>
+  <h2>Anonymous Settings</h2>
+  <h6>( Want to hide the following from your penpal? )</h6>
+  <app-toggle [control]="displayPicture" label="Display Picture"></app-toggle>
+  <app-toggle [control]="description" label="Description"></app-toggle>
+  <app-toggle [control]="age" label="Age"></app-toggle>
+  <app-toggle [control]="showInterests" label="Interest"></app-toggle>
+  </div>
