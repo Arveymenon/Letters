@@ -97,7 +97,7 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
       return
     }
     if(!this.UserDetails.valid){
-      this.toast.simpletoast('Kindly Provide Valid Input')
+      this.toast.simpletoast('Kindly Provide Valid Mobile Number And Handle')
       return
     }
 
