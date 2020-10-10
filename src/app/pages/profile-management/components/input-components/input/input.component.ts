@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 export class InputComponent implements OnInit{
   @Input('placeholder') placeholder: String;
   @Input('control') control: FormControl;
+  @Input('icon') icon: string;
   
   constructor() { }
 

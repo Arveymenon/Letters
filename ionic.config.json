@@ -1,0 +1,7 @@
+{
+  "name": "Letters2",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

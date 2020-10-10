@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { MediaUploadService } from 'src/app/Shared/Services/MediaUpload/media-upload.service';
 
 import { ImageInputComponent } from './image-input.component';
 
@@ -10,7 +12,13 @@ describe('ImageInputComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ImageInputComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      providers:[
+        MediaUploadService
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ImageInputComponent);

@@ -1,10 +1,15 @@
-<ion-content class="displayContents">
+<ion-content class="displayContents loginPage">
+  <div class="section_one">
+    <div class="parent_text_box">
+      <!-- <div class="text" #textBox id="text_box">Penpal Letters</div> -->
+      <div class="text" #textBox id="text_box"></div>
+      </div>
+  </div>
   <div class="login-form">
-      <app-input *ngIf="loginStage == 1" [validators]="emailValidators" [control]="email" placeholder="Email"></app-input>
-
-      <app-input *ngIf="loginStage == 2" [validators]="otpValidator" [control]="otp" max="6" placeholder="OTP"></app-input>
-      <p class="ion-text-end" *ngIf="loginStage == 2" (click)="resendOtp()">Resend OTP</p>
+      <app-input *ngIf="loginStage == 1" [control]="email" placeholder="Email"></app-input>
+      <app-input *ngIf="loginStage == 2" [control]="otp" max="6" placeholder="OTP"></app-input>
       
-      <ion-button (click)="login()" color="primary" expand="block">{{ loginStage == 1 ? 'Send OTP' : 'Submit' }}</ion-button>
+      <ion-button (click)="login()" [disabled]='!email.valid' color="primary" expand="block">{{ loginStage == 1 ? 'Send OTP' : 'Submit' }}</ion-button>
+      <p class="ion-text-center resend-otp" *ngIf="loginStage == 2" (click)="resendOtp()">Resend OTP</p>
     </div>
 </ion-content>

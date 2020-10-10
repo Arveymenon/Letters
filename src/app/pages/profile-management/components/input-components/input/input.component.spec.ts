@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { InputComponent } from './input.component';
@@ -10,7 +11,8 @@ describe('InputComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ InputComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(InputComponent);

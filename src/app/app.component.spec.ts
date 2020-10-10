@@ -6,6 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
+import { IonicStorageModule, Storage } from '@ionic/storage';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 describe('AppComponent', () => {
 
@@ -24,7 +27,13 @@ describe('AppComponent', () => {
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
+        HttpClient,
+        HttpHandler,
+        Router
       ],
+      imports: [
+        IonicStorageModule.forRoot()
+      ]
     }).compileComponents();
   }));
 

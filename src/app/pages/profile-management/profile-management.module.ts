@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,6 +17,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { SelectComponent } from './components/input-components/select/select.component';
 import { ToggleComponent } from './components/input-components/toggle/toggle.component';
+import { DatePickerComponent } from './components/input-components/date-picker/date-picker.component';
+import { DescriptionComponent } from './components/input-components/description/description.component';
 
 @NgModule({
   imports: [
@@ -37,6 +39,8 @@ import { ToggleComponent } from './components/input-components/toggle/toggle.com
     ImageInputComponent,
     SelectComponent,
     ToggleComponent,
+    DatePickerComponent,
+    DescriptionComponent,
 
     ProfileDetailsComponent,
     UserDetailsComponent

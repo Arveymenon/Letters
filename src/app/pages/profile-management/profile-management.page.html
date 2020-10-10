@@ -1,5 +1,36 @@
-<ion-content class="displayContents">
-  <app-user-details [value]='UserDetails' (setUserDetails)="setUserDetails($event)"></app-user-details>
-  <app-profile-details (setProfileDetails)="setProfileDetails($event)"></app-profile-details>
-  <ion-button color="primary" expand="block" (click)="updateProfile()">Submit</ion-button>
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-text-center">
+    <ion-title>
+      Profile Manage
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-row>        
+        <!-- user details -->
+        <ion-col size=6>
+          <app-user-details [value]='UserDetails' (setUserDetails)="setUserDetails($event)"></app-user-details>
+        </ion-col>
+        <!-- Privacy -->
+        <ion-col size="2" class="padding-none">
+        </ion-col>
+        <!-- User Image -->
+        <ion-col size="4" class="padding-none">
+          <app-image-input class="component-image"></app-image-input>
+        </ion-col>
+      </ion-row>
+
+      <!-- About User -->
+      <ion-row class="lg-padding">
+        <p><b>Subject:</b> Hey {{UserDetails.handle}}! Tell Us Something about yourself</p>
+          <app-profile-details (setProfileDetails)="setProfileDetails($event)"></app-profile-details>
+      </ion-row>
+        
 </ion-content>
+
+<ion-footer>
+    <p class="ion-text-center privacy">Kindly Check Details You Want To Show Your New Penpals</p>
+    <ion-button color="primary" expand="block" (click)="updateProfile()">Send</ion-button>
+</ion-footer>

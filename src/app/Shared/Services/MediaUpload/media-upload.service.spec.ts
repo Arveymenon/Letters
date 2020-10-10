@@ -1,4 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { Camera } from '@ionic-native/camera/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 import { MediaUploadService } from './media-upload.service';
 
@@ -6,7 +8,9 @@ describe('MediaUploadService', () => {
   let service: MediaUploadService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [Camera, ImagePicker]
+    });
     service = TestBed.inject(MediaUploadService);
   });
 

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Start Writting</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Select Friend -->
+  <ion-select placeholder="Select Friend" interface="popover">
+    <ion-select-option value="bacon">Pranav</ion-select-option>
+    <ion-select-option value="olives">Arul</ion-select-option>
+    <ion-select-option value="xcheese">Lamiyah</ion-select-option>
+    <ion-select-option value="peppers">Some other friend</ion-select-option>
+  </ion-select>
+
+  <div class="parent_editer">
+    <quill-editor theme="bubble"></quill-editor>
+    <p class="ion-text-center margin-none editor_info">Select Your Text To Add Styles</p>
+  </div>
+
+  <ion-fab class="write-letter" vertical="bottom" horizontal="end" slot="fixed" (click)="sendLetter()">
+    <ion-fab-button color="warning">
+      <ion-icon style="color: #fff" name="paper-plane-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

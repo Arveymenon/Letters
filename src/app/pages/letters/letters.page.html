@@ -1,0 +1,30 @@
+<ion-content>
+  <div class="letter-outlet">
+      <div class="letter_view" [innerHtml]="letters[0].message | safeHtml"></div>
+      <ion-fab class="view" (click)="viewLetter(letters[0])">
+        <ion-fab-button>
+          <ion-icon name="eye"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+  <div class="letters_list slide-over">
+    <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+      <ion-reorder *ngFor="let letter of letters; let i = index" [ngClass]="i == 0 ? 'top_card': ''">
+        <div [ngClass]="i == 0 ? '' : i%2 == 0 ? 'transform1' : i%3 == 0 ? 'transform2' : 'transform3'">
+          <ion-card class="letter_card">
+            <ion-item>
+              <ion-label [innerHtml]="letter.message | safeHtml"></ion-label>
+            </ion-item>
+          </ion-card>
+        </div>
+      </ion-reorder>
+    
+    </ion-reorder-group>
+  </div>
+  <ion-button (click)="logout()">Logout</ion-button>
+  <ion-fab class="write-letter" vertical="bottom" horizontal="end" slot="fixed" (click)="writeLetter()">
+    <ion-fab-button>
+      <ion-icon name="pencil-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

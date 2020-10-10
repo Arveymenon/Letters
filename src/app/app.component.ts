@@ -21,7 +21,7 @@ export class AppComponent {
   ) {
     this.initializeApp();
     this.authService.authenticate()
-    // this.storage.clear()
+    this.storage.clear()
   }
 
   initializeApp() {

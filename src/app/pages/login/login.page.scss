@@ -1,7 +1,38 @@
-.login-form{
-    display: block;
-    height: 6%;
-    margin-top: 75%;
-    width: 70%;
-    margin-left: 15%;
+.loginPage{
+    --background: url("../../../assets/background_images/background5.png") 0 0/100% 100% no-repeat;
+    .section_one{
+        height: 60%;
+        position: relative;
+        .parent_text_box{
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            
+            // .text{
+            //     font-size: 5.5em;
+            //     font-family: 'amstagram';
+            //     color: #ffc409;
+            //     height: 100px;
+            // }
+            .text{
+                font-size: 5.5em;
+                font-family: 'amstagram';
+                color: #ffc409;
+                padding-left: 27%;
+                width: 86%;
+                height: 100px;
+            }
+        }
+    }
+    
+    .login-form{
+        height: 40%;
+        width: 50%;
+        display: block;
+        margin-left: 25%;
+    }
+    .resend-otp{
+        margin-top: 42%;
+    }
 }

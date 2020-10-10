@@ -25,9 +25,57 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.displayContents{
-    display: contents;
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
+@import '~quill/dist/quill.bubble.css';
+
+// Fonts
+@font-face {
+  font-family: 'amstagram';
+  src: url("~assets/fonts/Amstagram.ttf");
 }
-.hidden{
-    display: none;
+
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.ion-page {
+    .slide-over{
+        box-shadow: 0px 0px 20px 0px #c3c3c3;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    ion-button{
+        font-weight: bold;
+        --ion-color-base: var(--ion-color-warning) !important;
+    }
+
+    .height-100{height: 100%}
+    .height-75{height: 75%}
+    .height-50{height: 50%}
+    .height-25{height: 25%}
+
+    .margin-none{ margin: 0 }
+
+    .padding-none{ padding: 0}
+    
+    .sm-padding{padding: 4px;}
+    .sm-padding-top{padding-top: 4px;}
+    .sm-padding-left{padding-left: 4px;}
+    .sm-padding-right{padding-right: 4px;}
+    .sm-padding-bottom{padding-bottom: 4px;}
+
+    .padding{padding: 8px;}
+    .lg-padding{padding: 16px;}
+
+    .bold{
+        font-weight: bold;
+    }
+    .displayContents{
+        display: contents;
+    }
+    .hidden{
+        display: none;
+    }
 }

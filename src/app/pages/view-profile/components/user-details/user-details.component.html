@@ -1,0 +1,21 @@
+<div class="ion-padding slide-over height-100 userDetails">
+  <div>
+    <p><b style="color: var(--ion-color-warning)">#</b>   {{ user.handle }}</p>
+  </div>
+  <div>
+    <p><ion-icon color="warning" name="at-outline"></ion-icon>   {{ user.email }}</p>
+  </div>
+  <div>
+    <p><ion-icon color="warning" name="call-outline"></ion-icon>  {{ user.mobile }}</p>
+  </div>
+  <div *ngIf="user.dob">
+    <p><ion-icon color="warning" name="calendar-outline"></ion-icon> {{ getBirthday(user.dob) }}</p>
+  </div>
+  <div *ngIf="user.interests">
+    <p><ion-icon color="warning" name="globe-outline"></ion-icon> Interested in <span *ngFor="let interest of user.interests" class="interest">{{ interest }}</span></p>
+  </div>
+  <div *ngIf="user.description">
+    <p>Subject: About User</p>
+    {{ user.description }}
+  </div><br>
+</div>

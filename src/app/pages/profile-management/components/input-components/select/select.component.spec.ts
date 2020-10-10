@@ -10,7 +10,7 @@ describe('SelectComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SelectComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: []
     }).compileComponents();
 
     fixture = TestBed.createComponent(SelectComponent);

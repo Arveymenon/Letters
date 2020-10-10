@@ -1,17 +1,18 @@
-<ion-content class="content">
-  <div class="image-box">
-    <!-- Existing Image -->
-    <div class="image" *ngIf="image" (click)='uploadImageOption()'>
-        <img [src]="image">
-      </div>
-      <!-- Input Image -->
-    <div class="image" *ngIf="!image" (click)='uploadImageOption()'>
-        <input type='file' class="hidden">
-        <ion-icon name='camera' class="camera-icon"></ion-icon>
-        <div class="add-icon-parent">
-            <ion-icon name="add-sharp" class="add-icon"></ion-icon>
-            <!-- <ion-icon name='add'></ion-icon> -->
-          </div>
-      </div>
-  </div>
-</ion-content>
+<div class="image-box">
+
+  <!-- Attachment Icon -->
+  <ion-icon class="attach_icon" name="attach-outline"></ion-icon>
+
+  <!-- Existing Image -->
+  <div class="image" *ngIf="image" (click)='uploadImageOption()'>
+      <img [src]="image">
+    </div>
+    <!-- Input Image -->
+  <div class="image" *ngIf="!image" (click)='uploadImageOption()'>
+      <input type='file' class="hidden">
+      <ion-icon name='camera' class="camera-icon"></ion-icon>
+      <div class="add-icon-parent">
+          <!-- <ion-icon name="add-sharp" class="add-icon"></ion-icon> -->
+        </div>
+    </div>
+</div>

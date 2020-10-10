@@ -318,19 +318,40 @@ let AuthService = class AuthService {
             });
         });
     }
+    setUser(user) {
+        return new Promise((resolve) => {
+            let User = {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                mobile: user.mobile,
+            };
+            this.storage.set("user", User).then(() => {
+                resolve(User);
+            });
+        });
+    }
     authenticate() {
         this.storage.get("user").then((user) => {
+            this.user = user;
             if (user) {
                 if (user.mobile)
                     this.router.navigateByUrl("home");
-                else
-                    this.router.navigateByUrl("profile-management");
+                else {
+                    let id = user["_id"];
+                    this.router.navigateByUrl("profile-management?id=" + id);
+                }
             }
             else {
                 this.router.navigateByUrl("login");
             }
         });
     }
+    logout() {
+        this.storage.clear();
+        this.router.navigateByUrl('login');
+    }
+    get getUser() { return this.user; }
 };
 AuthService.ctorParameters = () => [
     { type: _HttpService_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] },
@@ -460,21 +481,29 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: 'home',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-home-home-module */ "pages-home-home-module").then(__webpack_require__.bind(null, /*! ./pages/home/home.module */ "./src/app/pages/home/home.module.ts")).then(m => m.HomePageModule)
-    },
-    {
-        path: 'profile-management',
-        loadChildren: () => __webpack_require__.e(/*! import() | pages-profile-management-profile-management-module */ "pages-profile-management-profile-management-module").then(__webpack_require__.bind(null, /*! ./pages/profile-management/profile-management.module */ "./src/app/pages/profile-management/profile-management.module.ts")).then(m => m.ProfileManagementPageModule)
+        path: '',
+        redirectTo: 'home/letters/write',
+        pathMatch: 'full'
     },
     {
         path: 'login',
         loadChildren: () => __webpack_require__.e(/*! import() | pages-login-login-module */ "pages-login-login-module").then(__webpack_require__.bind(null, /*! ./pages/login/login.module */ "./src/app/pages/login/login.module.ts")).then(m => m.LoginPageModule)
     },
     {
-        path: '',
-        redirectTo: 'profile-management',
-        pathMatch: 'full'
+        path: 'home',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-home-home-module */ "pages-home-home-module").then(__webpack_require__.bind(null, /*! ./pages/home/home.module */ "./src/app/pages/home/home.module.ts")).then(m => m.HomePageModule)
+    },
+    {
+        path: 'profile-management',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-profile-management-profile-management-module */ "profile-management-profile-management-module").then(__webpack_require__.bind(null, /*! ./pages/profile-management/profile-management.module */ "./src/app/pages/profile-management/profile-management.module.ts")).then(m => m.ProfileManagementPageModule)
+    },
+    {
+        path: 'friends',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-friends-friends-module */ "friends-friends-module").then(__webpack_require__.bind(null, /*! ./pages/friends/friends.module */ "./src/app/pages/friends/friends.module.ts")).then(m => m.FriendsPageModule)
+    },
+    {
+        path: 'view-profile',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-view-profile-view-profile-module */ "pages-view-profile-view-profile-module").then(__webpack_require__.bind(null, /*! ./pages/view-profile/view-profile.module */ "./src/app/pages/view-profile/view-profile.module.ts")).then(m => m.ViewProfilePageModule)
     },
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -538,7 +567,7 @@ let AppComponent = class AppComponent {
         this.authService = authService;
         this.initializeApp();
         // this.authService.authenticate()
-        // this.storage.clear()
+        this.storage.clear();
     }
     initializeApp() {
         this.platform.ready().then(() => {
@@ -592,6 +621,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Shared/Services/Authentication/auth.service */ "./src/app/Shared/Services/Authentication/auth.service.ts");
 /* harmony import */ var _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/image-picker/ngx */ "./node_modules/@ionic-native/image-picker/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/base64/ngx */ "./node_modules/@ionic-native/base64/__ivy_ngcc__/ngx/index.js");
+
 
 
 
@@ -626,9 +657,11 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"],
             _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__["Camera"],
+            _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_16__["Base64"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicRouteStrategy"] },
             _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_14__["ImagePicker"],
             _Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_13__["AuthService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClient"],
             _Shared_Services_HttpService_http_service__WEBPACK_IMPORTED_MODULE_12__["HttpService"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
@@ -701,7 +734,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/arvey/Desktop/testing/Ionic/Letters/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/arvey/Desktop/testing/Ionic/Letters2/src/main.ts */"./src/main.ts");
 
 
 /***/ })

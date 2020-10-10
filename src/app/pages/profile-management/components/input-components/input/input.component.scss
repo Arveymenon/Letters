@@ -1,3 +1,11 @@
-.content {
-    max-height: 50px;
+.input_icon{
+    margin-top: 10px;
+    opacity: 0.7;
+}
+ion-input{
+    --padding-top: 10px;
+    --padding-bottom: 0;
+    --padding-start: 17px;
+    // input{
+    // }
 }

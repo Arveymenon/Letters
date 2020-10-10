@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
 import { AppComponent } from "./app.component";
@@ -10,7 +10,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { HttpService } from './Shared/Services/HttpService/http.service';
 import { AuthService } from './Shared/Services/Authentication/auth.service';
@@ -36,8 +36,9 @@ import { Base64 } from '@ionic-native/base64/ngx';
     Base64,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ImagePicker,
-     AuthService,
-     HttpService
+    AuthService,
+    HttpClient,
+    HttpService
   ],
   bootstrap: [AppComponent],
 })
