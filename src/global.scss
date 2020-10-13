@@ -29,6 +29,9 @@
 @import '~quill/dist/quill.snow.css';
 @import '~quill/dist/quill.bubble.css';
 
+// Theming
+@import './theme/dark_theme.scss';
+
 // Fonts
 @font-face {
   font-family: 'amstagram';
