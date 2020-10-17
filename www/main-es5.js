@@ -239,7 +239,8 @@
                 mobile: user.mobile
               };
 
-              _this2.storage.set("user", User).then(function () {
+              _this2.storage.set("user", user).then(function () {
+                _this2.user = user;
                 resolve(User);
               });
             });
@@ -272,7 +273,13 @@
         }, {
           key: "getUser",
           get: function get() {
-            return this.user;
+            var _this4 = this;
+
+            return new Promise(function (res, rej) {
+              _this4.storage.get('user').then(function (user) {
+                res(user);
+              });
+            });
           }
         }]);
 
@@ -518,7 +525,7 @@
 
       var routes = [{
         path: '',
-        redirectTo: 'home/letters/write',
+        redirectTo: 'login',
         pathMatch: 'full'
       }, {
         path: 'login',
@@ -665,22 +672,15 @@
       var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @ionic/storage */
       "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
-      /* harmony import */
-
-
-      var _Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-      /*! ./Shared/Services/Authentication/auth.service */
-      "./src/app/Shared/Services/Authentication/auth.service.ts");
 
       var AppComponent = /*#__PURE__*/function () {
-        function AppComponent(platform, splashScreen, statusBar, storage, authService) {
+        function AppComponent(platform, splashScreen, statusBar, storage) {
           _classCallCheck(this, AppComponent);
 
           this.platform = platform;
           this.splashScreen = splashScreen;
           this.statusBar = statusBar;
           this.storage = storage;
-          this.authService = authService;
           this.initializeApp(); // this.authService.authenticate()
 
           this.storage.clear();
@@ -689,12 +689,12 @@
         _createClass(AppComponent, [{
           key: "initializeApp",
           value: function initializeApp() {
-            var _this4 = this;
+            var _this5 = this;
 
             this.platform.ready().then(function () {
-              _this4.statusBar.styleDefault();
+              _this5.statusBar.styleDefault();
 
-              _this4.splashScreen.hide();
+              _this5.splashScreen.hide();
             });
           }
         }]);
@@ -711,8 +711,6 @@
           type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]
         }, {
           type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]
-        }, {
-          type: _Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]
         }];
       };
 

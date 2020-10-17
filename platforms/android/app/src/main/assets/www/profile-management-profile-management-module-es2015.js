@@ -87,7 +87,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-description placeholder=\"I Am Awesome\" [control]=\"description\"></app-description>\n<app-select placeholder=\"Interest\" multiple=\"true\"\n [control]=\"selectControl\" [options]=\"interests\" [key]=\"key\" [value]=\"value\">\n</app-select>\n\n  <div>\n   <p class=\"bold\">Privacy Settings</p>\n  <app-toggle [control]=\"displayPicture\" label=\"Display Picture\"></app-toggle>\n  <app-toggle [control]=\"show_description\" label=\"Description\"></app-toggle>\n  <app-toggle [control]=\"dob\" label=\"Age\"></app-toggle>\n  <app-toggle [control]=\"showInterests\" label=\"Interest\"></app-toggle>\n  </div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-select placeholder=\"Interest\" multiple=\"true\"\n [control]=\"selectControl\" [options]=\"interests\" key=\"id\" value=\"interest\">\n</app-select>\n<app-description placeholder=\"I Am Awesome\" [control]=\"description\"></app-description>\n\n  <div>\n   <p class=\"bold\">Privacy Settings</p>\n  <app-toggle [control]=\"displayPicture\" label=\"Display Picture\"></app-toggle>\n  <app-toggle [control]=\"show_description\" label=\"Description\"></app-toggle>\n  <app-toggle [control]=\"dob\" label=\"Age\"></app-toggle>\n  <app-toggle [control]=\"showInterests\" label=\"Interest\"></app-toggle>\n  </div>");
 
 /***/ }),
 
@@ -113,7 +113,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"ion-text-center\">\n    <ion-title>\n      Profile Manage\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n    <ion-row>        \n        <!-- user details -->\n        <ion-col size=6>\n          <app-user-details [value]='UserDetails' (setUserDetails)=\"setUserDetails($event)\"></app-user-details>\n        </ion-col>\n        <!-- Privacy -->\n        <ion-col size=\"2\" class=\"padding-none\">\n        </ion-col>\n        <!-- User Image -->\n        <ion-col size=\"4\" class=\"padding-none\">\n          <app-image-input class=\"component-image\"></app-image-input>\n        </ion-col>\n      </ion-row>\n\n      <!-- About User -->\n      <ion-row class=\"lg-padding\">\n        <p><b>Subject:</b> Hey {{UserDetails.handle}}! Tell Us Something about yourself</p>\n          <app-profile-details (setProfileDetails)=\"setProfileDetails($event)\"></app-profile-details>\n      </ion-row>\n        \n</ion-content>\n\n<ion-footer>\n    <p class=\"ion-text-center privacy\">Kindly Check Details You Want To Show Your New Penpals</p>\n    <ion-button color=\"primary\" expand=\"block\" (click)=\"updateProfile()\">Send</ion-button>\n</ion-footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"ion-text-center\">\n    <!-- <ion-buttons slot=\"start\">\n      <ion-button>\n        <ion-icon color=\"dark\" slot=\"icon-only\" name=\"log-out-outline\"></ion-icon>\n      </ion-button>\n    </ion-buttons> -->\n    <ion-title>\n      Profile Manage\n    </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"authService.logout()\">\n        <ion-icon slot=\"icon-only\" name=\"log-out-outline\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n    <ion-row>        \n        <!-- user details -->\n        <ion-col size=6>\n          <app-user-details [value]='UserDetails' (setUserDetails)=\"setUserDetails($event)\"></app-user-details>\n        </ion-col>\n        <!-- Privacy -->\n        <ion-col size=\"2\" class=\"padding-none\">\n        </ion-col>\n        <!-- User Image -->\n        <ion-col size=\"4\" class=\"padding-none\">\n          <app-image-input class=\"component-image\"></app-image-input>\n        </ion-col>\n      </ion-row>\n\n      <!-- About User -->\n      <ion-row class=\"lg-padding\">\n        <p *ngIf=\"UserDetails\"><b>Subject:</b> Hey {{UserDetails.handle}}! Tell Us Something about yourself</p>\n          <app-profile-details (setProfileDetails)=\"setProfileDetails($event)\"></app-profile-details>\n      </ion-row>\n        \n</ion-content>\n\n<ion-footer>\n    <p class=\"ion-text-center privacy\">Kindly Check Details You Want To Show Your New Penpals</p>\n    <ion-button expand=\"block\" (click)=\"updateProfile()\">Update Profile</ion-button>\n</ion-footer>");
 
 /***/ }),
 
@@ -138,7 +138,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let MediaUploadService = class MediaUploadService {
-    constructor(imagePicker, camera, base64) {
+    constructor(imagePicker, camera, base64
+    // public webview: WebView,
+    ) {
         this.imagePicker = imagePicker;
         this.camera = camera;
         this.base64 = base64;
@@ -167,6 +169,27 @@ let MediaUploadService = class MediaUploadService {
     // selectFromCamera = new Promise((resolve,reject)=>{
     //     resolve('imagePath')
     //   })
+    // openCamera(){
+    //   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
+    //     result => {
+    //       alert(result.hasPermission);
+    //       if(!result.hasPermission) {
+    //         this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
+    //         .then( cam => {
+    //           alert('permission result '+ JSON.stringify(cam) );
+    //           this.selectFromCamera();
+    //         })
+    //         .catch( error => {
+    //           alert('permission error occured '+ JSON.stringify(error) );
+    //         });
+    //       } else {
+    //         this.selectFromCamera();
+    //       }
+    //     },
+    //     err => {
+    //       this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA); 
+    //     });
+    // }
     selectFromCamera() {
         return new Promise((resolve, reject) => {
             const options = {
@@ -175,13 +198,15 @@ let MediaUploadService = class MediaUploadService {
                 encodingType: this.camera.EncodingType.JPEG,
                 mediaType: this.camera.MediaType.PICTURE
             };
+            console.log('Select pic');
             this.camera.getPicture(options).then((imageData) => {
                 console.log(imageData);
                 let imageURIs = imageData;
-                let base64 = this.pathToBase64(imageURIs), filename = new Date(), blob = this.dataURLtoBlob(base64, filename);
+                let base64 = this.pathToBase64(imageURIs);
+                let base64_2 = 'data:image/jpeg;base64,' + imageData, filename = new Date(), blob = this.dataURLtoBlob(base64, filename);
                 console.log(filename, imageURIs);
                 console.log(blob);
-                resolve({ blob, base64, filename });
+                resolve({ blob, base64_2, base64, filename });
             }, (err) => {
                 console.log(err);
             });
@@ -609,19 +634,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var src_app_Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/Shared/Services/Authentication/auth.service */ "./src/app/Shared/Services/Authentication/auth.service.ts");
+
 
 
 
 let ProfileDetailsComponent = class ProfileDetailsComponent {
-    constructor() {
+    constructor(authService) {
+        this.authService = authService;
         this.setProfileDetails = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.interests = [
             { id: '5f72f14d6e321073dea34abd', interest: "Skipping" },
             { id: '5f72f16b6e321073dea34abe', interest: "Jogging" },
             { id: '5f72f17e6e321073dea34abf', interest: "Sleeping" },
         ];
-        this.key = 'id';
-        this.value = 'interest';
         this.description = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('');
         this.selectControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required);
         // Toggle Form Controls
@@ -639,6 +665,17 @@ let ProfileDetailsComponent = class ProfileDetailsComponent {
             displayPicture: this.displayPicture.value,
             dob: this.dob.value,
         };
+        this.authService.getUser.then((user) => {
+            console.log(user);
+            if (user) {
+                this.selectControl.setValue(user.interests);
+                this.description.setValue(user.description);
+                this.displayPicture.setValue(user.show_display_picture);
+                this.show_description.setValue(user.show_description);
+                this.dob.setValue(user.show_age);
+                this.showInterests.setValue(user.show_interests);
+            }
+        });
     }
     ngDoCheck() {
         this.values.interests = this.selectControl.value;
@@ -653,7 +690,9 @@ let ProfileDetailsComponent = class ProfileDetailsComponent {
         this.setProfileDetails.emit(this.values);
     }
 };
-ProfileDetailsComponent.ctorParameters = () => [];
+ProfileDetailsComponent.ctorParameters = () => [
+    { type: src_app_Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] }
+];
 ProfileDetailsComponent.propDecorators = {
     values: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['value',] }],
     setProfileDetails: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"], args: ['setProfileDetails',] }]
@@ -696,17 +735,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var src_app_Shared_Services_HttpService_http_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/Shared/Services/HttpService/http.service */ "./src/app/Shared/Services/HttpService/http.service.ts");
-/* harmony import */ var src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/Shared/Services/Toast/toast.service */ "./src/app/Shared/Services/Toast/toast.service.ts");
+/* harmony import */ var src_app_Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/Shared/Services/Authentication/auth.service */ "./src/app/Shared/Services/Authentication/auth.service.ts");
+/* harmony import */ var src_app_Shared_Services_HttpService_http_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/Shared/Services/HttpService/http.service */ "./src/app/Shared/Services/HttpService/http.service.ts");
+/* harmony import */ var src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/Shared/Services/Toast/toast.service */ "./src/app/Shared/Services/Toast/toast.service.ts");
+
 
 
 
 
 
 let UserDetailsComponent = class UserDetailsComponent {
-    constructor(http, toast) {
+    constructor(http, toast, authService) {
         this.http = http;
         this.toast = toast;
+        this.authService = authService;
         this.setUserDetails = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.handle = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
         this.name = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"];
@@ -714,14 +756,23 @@ let UserDetailsComponent = class UserDetailsComponent {
         this.dob = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"];
     }
     ngOnInit() {
-        this.values = {
-            handle: this.handle.value,
-            name: this.handle.value,
-            mobile: this.mobile.value,
-            dob: this.dob.value,
-            valid: false,
-        };
         console.log(this.values);
+        this.values = {
+            name: '',
+            handle: '',
+            mobile: '',
+            dob: '',
+            valid: true
+        };
+        this.authService.getUser.then((user) => {
+            if (user) {
+                this.handle.setValue(user.handle);
+                this.name.setValue(user.name);
+                this.mobile.setValue(user.mobile);
+                this.dob.setValue(user.dob);
+                this.values.valid = true;
+            }
+        });
     }
     ngDoCheck() {
         this.values.handle = this.handle.value;
@@ -743,13 +794,14 @@ let UserDetailsComponent = class UserDetailsComponent {
                     this.valid_handle = true;
             }
             else {
+                // TO BE SET FALSE
                 if (id == 1)
-                    this.valid_mobile = false;
+                    this.valid_mobile = true;
                 else
-                    this.valid_handle = false;
+                    this.valid_handle = true;
                 this.toast.simpletoast(res.message);
             }
-            this.values.valid = this.valid_mobile && this.valid_handle;
+            this.values.valid = this.valid_mobile && this.valid_handle ? true : false;
         });
     }
     updateValues() {
@@ -757,8 +809,9 @@ let UserDetailsComponent = class UserDetailsComponent {
     }
 };
 UserDetailsComponent.ctorParameters = () => [
-    { type: src_app_Shared_Services_HttpService_http_service__WEBPACK_IMPORTED_MODULE_3__["HttpService"] },
-    { type: src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"] }
+    { type: src_app_Shared_Services_HttpService_http_service__WEBPACK_IMPORTED_MODULE_4__["HttpService"] },
+    { type: src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_5__["ToastService"] },
+    { type: src_app_Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] }
 ];
 UserDetailsComponent.propDecorators = {
     values: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"], args: ['value',] }],
@@ -900,7 +953,7 @@ ProfileManagementPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decor
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("app-profile-details {\n  width: 100%;\n}\n\n.profile_text h1 {\n  font-size: 2.2em;\n  color: #da9f00;\n  font-weight: 600;\n}\n\n.privacy {\n  font-size: 0.8em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS1tYW5hZ2VtZW50L3Byb2ZpbGUtbWFuYWdlbWVudC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0FBQ0o7O0FBRUk7RUFDSSxnQkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtBQUNSOztBQUVBO0VBQ0ksZ0JBQUE7QUFDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUtbWFuYWdlbWVudC9wcm9maWxlLW1hbmFnZW1lbnQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYXBwLXByb2ZpbGUtZGV0YWlsc3tcbiAgICB3aWR0aDogMTAwJVxufVxuLnByb2ZpbGVfdGV4dHtcbiAgICBoMXtcbiAgICAgICAgZm9udC1zaXplOiAyLjJlbTtcbiAgICAgICAgY29sb3I6ICNkYTlmMDA7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgfVxufVxuLnByaXZhY3l7XG4gICAgZm9udC1zaXplOiAwLjhlbTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-title {\n  margin-left: 65px;\n}\n\napp-profile-details {\n  width: 100%;\n}\n\n.profile_text h1 {\n  font-size: 2.2em;\n  color: #da9f00;\n  font-weight: 600;\n}\n\n.privacy {\n  font-size: 0.8em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS1tYW5hZ2VtZW50L3Byb2ZpbGUtbWFuYWdlbWVudC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtBQUNKOztBQUNBO0VBQ0ksV0FBQTtBQUVKOztBQUNJO0VBQ0ksZ0JBQUE7RUFDQSxjQUFBO0VBQ0EsZ0JBQUE7QUFFUjs7QUFDQTtFQUNJLGdCQUFBO0FBRUoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9wcm9maWxlLW1hbmFnZW1lbnQvcHJvZmlsZS1tYW5hZ2VtZW50LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10aXRsZXtcbiAgICBtYXJnaW4tbGVmdDogNjVweFxufVxuYXBwLXByb2ZpbGUtZGV0YWlsc3tcbiAgICB3aWR0aDogMTAwJVxufVxuLnByb2ZpbGVfdGV4dHtcbiAgICBoMXtcbiAgICAgICAgZm9udC1zaXplOiAyLjJlbTtcbiAgICAgICAgY29sb3I6ICNkYTlmMDA7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgfVxufVxuLnByaXZhY3l7XG4gICAgZm9udC1zaXplOiAwLjhlbTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -942,34 +995,34 @@ let ProfileManagementPage = class ProfileManagementPage {
         this.platform.backButton.isStopped = true;
     }
     ngOnInit() {
-        this.route.queryParams.subscribe((values) => {
-            console.log(values.id);
-            if (values.id) {
-                this.userId = values.id;
-                // values.id -> ID passed in params who details shall be shown on the front end
-                // this.authService.getUser -> Current User
-                if (values.id == this.authService.getUser._id) {
-                    this.httpService.get('customer/get/' + values.id).subscribe((res) => {
-                        if (res.error == false) {
-                            this.setValues(res.response);
-                        }
-                    });
-                }
-                else {
-                    this.setValues(this.authService.getUser);
-                }
-            }
-            else
-                this.authService.authenticate();
-        });
+        console.log('profile-management');
+        // this.route.queryParams.subscribe((values) => {
+        //   console.log(values.id);
+        //   if(values.id){
+        //     this.userId = values.id
+        //     // values.id -> ID passed in params who details shall be shown on the front end
+        //     // this.authService.getUser -> Current User
+        //     if(values.id == this.authService.getUser._id){
+        //       this.httpService.get('customer/get/'+values.id).subscribe((res: any)=>{
+        //         if(res.error == false){
+        //           this.setValues(res.response)
+        //         }
+        //       })
+        //     } else {
+        //       this.setValues(this.authService.getUser)
+        //     }
+        //   }
+        //   else
+        //     this.authService.authenticate()
+        // });
     }
     ngOnDestroy() {
         console.log('Destroyed');
     }
-    setValues(user) {
-        console.log(user);
-        this.UserDetails.name = user.name;
-    }
+    // setValues(user){
+    //   console.log(user)
+    //   this.UserDetails.name = user.name
+    // }
     setUserDetails(details) {
         this.UserDetails = details;
     }
@@ -990,7 +1043,7 @@ let ProfileManagementPage = class ProfileManagementPage {
             return;
         }
         if (!this.UserDetails.valid) {
-            this.toast.simpletoast('Kindly Provide Valid Input');
+            this.toast.simpletoast('Kindly Provide Valid Mobile Number And Handle');
             return;
         }
         console.log(this.UserDetails);
@@ -1010,12 +1063,12 @@ let ProfileManagementPage = class ProfileManagementPage {
             show_interests: this.ProfileDetails.showInterests,
         };
         console.log(reqBody);
-        this.httpService.post("customer/update", reqBody).subscribe((res) => {
-            if (res.error == false) {
-                this.authService.setUser(res.response);
-                this.router.navigateByUrl('home');
-            }
-        });
+        // this.httpService.post("customer/update", reqBody).subscribe((res: any)=> {
+        //   if(res.error == false){
+        this.authService.setUser(reqBody);
+        this.router.navigateByUrl('home');
+        //   }
+        // });
     }
 };
 ProfileManagementPage.ctorParameters = () => [

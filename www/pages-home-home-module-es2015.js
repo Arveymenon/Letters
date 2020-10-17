@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-tabs>\n    <ion-tab-bar slot=\"bottom\">\n      \n      <ion-tab-button tab=\"friends\">\n        <ion-icon name=\"people\"></ion-icon>\n        <ion-label>Friends</ion-label>\n      </ion-tab-button>\n\n      <ion-tab-button tab=\"letters\">\n        <ion-icon name=\"mail-outline\"></ion-icon>\n        <ion-label>Letters</ion-label>\n      </ion-tab-button>\n\n      <ion-tab-button (click)=\"goToProfile()\">\n        <ion-icon name=\"person-circle\"></ion-icon>\n        <ion-label>Profile</ion-label>\n      </ion-tab-button>\n      \n    </ion-tab-bar>\n  </ion-tabs>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-tabs>\n    <ion-tab-bar slot=\"bottom\">\n      \n      <ion-tab-button tab=\"friends\">\n        <ion-icon name=\"people\"></ion-icon>\n        <ion-label>Friends</ion-label>\n      </ion-tab-button>\n\n      <ion-tab-button tab=\"letters\">\n        <ion-icon name=\"mail-outline\"></ion-icon>\n        <ion-label>Letters</ion-label>\n      </ion-tab-button>\n\n      <ion-tab-button tab=\"profile\">\n        <ion-icon name=\"person-circle\"></ion-icon>\n        <ion-label>Profile</ion-label>\n      </ion-tab-button>\n      \n    </ion-tab-bar>\n  </ion-tabs>");
 
 /***/ }),
 
@@ -148,8 +148,17 @@ let HomePage = class HomePage {
         this.auth = auth;
         this.router = router;
     }
+    ngOnInit() {
+        console.log('Home');
+    }
     goToProfile() {
-        this.router.navigateByUrl('/home/profile?id=' + this.auth.getUser._id);
+        this.router.navigateByUrl('/home/profile');
+    }
+    goToLetters() {
+        this.router.navigateByUrl('/home/letters');
+    }
+    goToFriends() {
+        this.router.navigateByUrl('/home/friends');
     }
 };
 HomePage.ctorParameters = () => [

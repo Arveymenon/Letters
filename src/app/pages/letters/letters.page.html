@@ -1,3 +1,11 @@
+<ion-header [translucent]="true" *ngIf="router.url == '/friends/letters'">
+  <ion-toolbar (click)="viewProfile()">
+    <ion-title>
+      Letter's By: Arvey
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div class="letter-outlet">
       <div class="letter_view" [innerHtml]="letters[0].message | safeHtml"></div>
@@ -13,7 +21,12 @@
         <div [ngClass]="i == 0 ? '' : i%2 == 0 ? 'transform1' : i%3 == 0 ? 'transform2' : 'transform3'">
           <ion-card class="letter_card">
             <ion-item>
-              <ion-label [innerHtml]="letter.message | safeHtml"></ion-label>
+              <ion-label>
+                <ion-row><ion-col class="ion-text-start sentBy">Sent By: {{ letter.from.name }}</ion-col>
+                    <ion-col class="ion-text-end">{{ letter.read ? 'Read' : 'Unread' }}</ion-col></ion-row>
+                <div [innerHtml]="letter.message | safeHtml">
+                  </div>
+              </ion-label>
             </ion-item>
           </ion-card>
         </div>
@@ -21,7 +34,6 @@
     
     </ion-reorder-group>
   </div>
-  <ion-button (click)="logout()">Logout</ion-button>
   <ion-fab class="write-letter" vertical="bottom" horizontal="end" slot="fixed" (click)="writeLetter()">
     <ion-fab-button>
       <ion-icon name="pencil-outline"></ion-icon>

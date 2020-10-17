@@ -17,10 +17,10 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storage: Storage,
-    private authService: AuthService
+    // private authService: AuthService
   ) {
     this.initializeApp();
-    this.authService.authenticate()
+    // this.authService.authenticate()
     this.storage.clear()
   }
 

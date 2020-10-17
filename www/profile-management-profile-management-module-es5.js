@@ -142,7 +142,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<app-description placeholder=\"I Am Awesome\" [control]=\"description\"></app-description>\n<app-select placeholder=\"Interest\" multiple=\"true\"\n [control]=\"selectControl\" [options]=\"interests\" [key]=\"key\" [value]=\"value\">\n</app-select>\n\n  <div>\n   <p class=\"bold\">Privacy Settings</p>\n  <app-toggle [control]=\"displayPicture\" label=\"Display Picture\"></app-toggle>\n  <app-toggle [control]=\"show_description\" label=\"Description\"></app-toggle>\n  <app-toggle [control]=\"dob\" label=\"Age\"></app-toggle>\n  <app-toggle [control]=\"showInterests\" label=\"Interest\"></app-toggle>\n  </div>";
+      __webpack_exports__["default"] = "<app-select placeholder=\"Interest\" multiple=\"true\"\n [control]=\"selectControl\" [options]=\"interests\" key=\"id\" value=\"interest\">\n</app-select>\n<app-description placeholder=\"I Am Awesome\" [control]=\"description\"></app-description>\n\n  <div>\n   <p class=\"bold\">Privacy Settings</p>\n  <app-toggle [control]=\"displayPicture\" label=\"Display Picture\"></app-toggle>\n  <app-toggle [control]=\"show_description\" label=\"Description\"></app-toggle>\n  <app-toggle [control]=\"dob\" label=\"Age\"></app-toggle>\n  <app-toggle [control]=\"showInterests\" label=\"Interest\"></app-toggle>\n  </div>";
       /***/
     },
 
@@ -182,7 +182,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"ion-text-center\">\n    <ion-title>\n      Profile Manage\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n    <ion-row>        \n        <!-- user details -->\n        <ion-col size=6>\n          <app-user-details [value]='UserDetails' (setUserDetails)=\"setUserDetails($event)\"></app-user-details>\n        </ion-col>\n        <!-- Privacy -->\n        <ion-col size=\"2\" class=\"padding-none\">\n        </ion-col>\n        <!-- User Image -->\n        <ion-col size=\"4\" class=\"padding-none\">\n          <app-image-input class=\"component-image\"></app-image-input>\n        </ion-col>\n      </ion-row>\n\n      <!-- About User -->\n      <ion-row class=\"lg-padding\">\n        <p><b>Subject:</b> Hey {{UserDetails.handle}}! Tell Us Something about yourself</p>\n          <app-profile-details (setProfileDetails)=\"setProfileDetails($event)\"></app-profile-details>\n      </ion-row>\n        \n</ion-content>\n\n<ion-footer>\n    <p class=\"ion-text-center privacy\">Kindly Check Details You Want To Show Your New Penpals</p>\n    <ion-button color=\"primary\" expand=\"block\" (click)=\"updateProfile()\">Send</ion-button>\n</ion-footer>";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"ion-text-center\">\n    <!-- <ion-buttons slot=\"start\">\n      <ion-button>\n        <ion-icon color=\"dark\" slot=\"icon-only\" name=\"log-out-outline\"></ion-icon>\n      </ion-button>\n    </ion-buttons> -->\n    <ion-title>\n      Profile Manage\n    </ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"authService.logout()\">\n        <ion-icon slot=\"icon-only\" name=\"log-out-outline\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n    <ion-row>        \n        <!-- user details -->\n        <ion-col size=6>\n          <app-user-details [value]='UserDetails' (setUserDetails)=\"setUserDetails($event)\"></app-user-details>\n        </ion-col>\n        <!-- Privacy -->\n        <ion-col size=\"2\" class=\"padding-none\">\n        </ion-col>\n        <!-- User Image -->\n        <ion-col size=\"4\" class=\"padding-none\">\n          <app-image-input class=\"component-image\"></app-image-input>\n        </ion-col>\n      </ion-row>\n\n      <!-- About User -->\n      <ion-row class=\"lg-padding\">\n        <p *ngIf=\"UserDetails\"><b>Subject:</b> Hey {{UserDetails.handle}}! Tell Us Something about yourself</p>\n          <app-profile-details (setProfileDetails)=\"setProfileDetails($event)\"></app-profile-details>\n      </ion-row>\n        \n</ion-content>\n\n<ion-footer>\n    <p class=\"ion-text-center privacy\">Kindly Check Details You Want To Show Your New Penpals</p>\n    <ion-button expand=\"block\" (click)=\"updateProfile()\">Update Profile</ion-button>\n</ion-footer>";
       /***/
     },
 
@@ -237,7 +237,8 @@
       "./node_modules/@ionic-native/base64/__ivy_ngcc__/ngx/index.js");
 
       var MediaUploadService = /*#__PURE__*/function () {
-        function MediaUploadService(imagePicker, camera, base64) {
+        function MediaUploadService(imagePicker, camera, base64 // public webview: WebView,
+        ) {
           _classCallCheck(this, MediaUploadService);
 
           this.imagePicker = imagePicker;
@@ -274,6 +275,27 @@
           } // selectFromCamera = new Promise((resolve,reject)=>{
           //     resolve('imagePath')
           //   })
+          // openCamera(){
+          //   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
+          //     result => {
+          //       alert(result.hasPermission);
+          //       if(!result.hasPermission) {
+          //         this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
+          //         .then( cam => {
+          //           alert('permission result '+ JSON.stringify(cam) );
+          //           this.selectFromCamera();
+          //         })
+          //         .catch( error => {
+          //           alert('permission error occured '+ JSON.stringify(error) );
+          //         });
+          //       } else {
+          //         this.selectFromCamera();
+          //       }
+          //     },
+          //     err => {
+          //       this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA); 
+          //     });
+          // }
 
         }, {
           key: "selectFromCamera",
@@ -287,12 +309,15 @@
                 encodingType: _this2.camera.EncodingType.JPEG,
                 mediaType: _this2.camera.MediaType.PICTURE
               };
+              console.log('Select pic');
 
               _this2.camera.getPicture(options).then(function (imageData) {
                 console.log(imageData);
                 var imageURIs = imageData;
 
-                var base64 = _this2.pathToBase64(imageURIs),
+                var base64 = _this2.pathToBase64(imageURIs);
+
+                var base64_2 = 'data:image/jpeg;base64,' + imageData,
                     filename = new Date(),
                     blob = _this2.dataURLtoBlob(base64, filename);
 
@@ -300,6 +325,7 @@
                 console.log(blob);
                 resolve({
                   blob: blob,
+                  base64_2: base64_2,
                   base64: base64,
                   filename: filename
                 });
@@ -1084,11 +1110,18 @@
       var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/forms */
       "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+      /* harmony import */
+
+
+      var src_app_Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! src/app/Shared/Services/Authentication/auth.service */
+      "./src/app/Shared/Services/Authentication/auth.service.ts");
 
       var ProfileDetailsComponent = /*#__PURE__*/function () {
-        function ProfileDetailsComponent() {
+        function ProfileDetailsComponent(authService) {
           _classCallCheck(this, ProfileDetailsComponent);
 
+          this.authService = authService;
           this.setProfileDetails = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
           this.interests = [{
             id: '5f72f14d6e321073dea34abd',
@@ -1100,8 +1133,6 @@
             id: '5f72f17e6e321073dea34abf',
             interest: "Sleeping"
           }];
-          this.key = 'id';
-          this.value = 'interest';
           this.description = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('');
           this.selectControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required); // Toggle Form Controls
 
@@ -1114,6 +1145,8 @@
         _createClass(ProfileDetailsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
+            var _this4 = this;
+
             this.values = {
               interests: this.selectControl.value,
               description: this.description.value,
@@ -1122,6 +1155,23 @@
               displayPicture: this.displayPicture.value,
               dob: this.dob.value
             };
+            this.authService.getUser.then(function (user) {
+              console.log(user);
+
+              if (user) {
+                _this4.selectControl.setValue(user.interests);
+
+                _this4.description.setValue(user.description);
+
+                _this4.displayPicture.setValue(user.show_display_picture);
+
+                _this4.show_description.setValue(user.show_description);
+
+                _this4.dob.setValue(user.show_age);
+
+                _this4.showInterests.setValue(user.show_interests);
+              }
+            });
           }
         }, {
           key: "ngDoCheck",
@@ -1145,7 +1195,9 @@
       }();
 
       ProfileDetailsComponent.ctorParameters = function () {
-        return [];
+        return [{
+          type: src_app_Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]
+        }];
       };
 
       ProfileDetailsComponent.propDecorators = {
@@ -1230,22 +1282,29 @@
       /* harmony import */
 
 
-      var src_app_Shared_Services_HttpService_http_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var src_app_Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! src/app/Shared/Services/Authentication/auth.service */
+      "./src/app/Shared/Services/Authentication/auth.service.ts");
+      /* harmony import */
+
+
+      var src_app_Shared_Services_HttpService_http_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! src/app/Shared/Services/HttpService/http.service */
       "./src/app/Shared/Services/HttpService/http.service.ts");
       /* harmony import */
 
 
-      var src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! src/app/Shared/Services/Toast/toast.service */
       "./src/app/Shared/Services/Toast/toast.service.ts");
 
       var UserDetailsComponent = /*#__PURE__*/function () {
-        function UserDetailsComponent(http, toast) {
+        function UserDetailsComponent(http, toast, authService) {
           _classCallCheck(this, UserDetailsComponent);
 
           this.http = http;
           this.toast = toast;
+          this.authService = authService;
           this.setUserDetails = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
           this.handle = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
           this.name = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
@@ -1256,14 +1315,29 @@
         _createClass(UserDetailsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            this.values = {
-              handle: this.handle.value,
-              name: this.handle.value,
-              mobile: this.mobile.value,
-              dob: this.dob.value,
-              valid: false
-            };
+            var _this5 = this;
+
             console.log(this.values);
+            this.values = {
+              name: '',
+              handle: '',
+              mobile: '',
+              dob: '',
+              valid: true
+            };
+            this.authService.getUser.then(function (user) {
+              if (user) {
+                _this5.handle.setValue(user.handle);
+
+                _this5.name.setValue(user.name);
+
+                _this5.mobile.setValue(user.mobile);
+
+                _this5.dob.setValue(user.dob);
+
+                _this5.values.valid = true;
+              }
+            });
           }
         }, {
           key: "ngDoCheck",
@@ -1277,7 +1351,7 @@
         }, {
           key: "checkIfExists",
           value: function checkIfExists(id) {
-            var _this4 = this;
+            var _this6 = this;
 
             var reqBody = {
               findBy: id,
@@ -1285,14 +1359,15 @@
             };
             this.http.post('customer/check', reqBody).subscribe(function (res) {
               if (!res.error) {
-                if (id == 1) _this4.valid_mobile = true;else _this4.valid_handle = true;
+                if (id == 1) _this6.valid_mobile = true;else _this6.valid_handle = true;
               } else {
-                if (id == 1) _this4.valid_mobile = false;else _this4.valid_handle = false;
+                // TO BE SET FALSE
+                if (id == 1) _this6.valid_mobile = true;else _this6.valid_handle = true;
 
-                _this4.toast.simpletoast(res.message);
+                _this6.toast.simpletoast(res.message);
               }
 
-              _this4.values.valid = _this4.valid_mobile && _this4.valid_handle;
+              _this6.values.valid = _this6.valid_mobile && _this6.valid_handle ? true : false;
             });
           }
         }, {
@@ -1307,9 +1382,11 @@
 
       UserDetailsComponent.ctorParameters = function () {
         return [{
-          type: src_app_Shared_Services_HttpService_http_service__WEBPACK_IMPORTED_MODULE_3__["HttpService"]
+          type: src_app_Shared_Services_HttpService_http_service__WEBPACK_IMPORTED_MODULE_4__["HttpService"]
         }, {
-          type: src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_4__["ToastService"]
+          type: src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_5__["ToastService"]
+        }, {
+          type: src_app_Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]
         }];
       };
 
@@ -1546,7 +1623,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "app-profile-details {\n  width: 100%;\n}\n\n.profile_text h1 {\n  font-size: 2.2em;\n  color: #da9f00;\n  font-weight: 600;\n}\n\n.privacy {\n  font-size: 0.8em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS1tYW5hZ2VtZW50L3Byb2ZpbGUtbWFuYWdlbWVudC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0FBQ0o7O0FBRUk7RUFDSSxnQkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtBQUNSOztBQUVBO0VBQ0ksZ0JBQUE7QUFDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUtbWFuYWdlbWVudC9wcm9maWxlLW1hbmFnZW1lbnQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYXBwLXByb2ZpbGUtZGV0YWlsc3tcbiAgICB3aWR0aDogMTAwJVxufVxuLnByb2ZpbGVfdGV4dHtcbiAgICBoMXtcbiAgICAgICAgZm9udC1zaXplOiAyLjJlbTtcbiAgICAgICAgY29sb3I6ICNkYTlmMDA7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgfVxufVxuLnByaXZhY3l7XG4gICAgZm9udC1zaXplOiAwLjhlbTtcbn0iXX0= */";
+      __webpack_exports__["default"] = "ion-title {\n  margin-left: 65px;\n}\n\napp-profile-details {\n  width: 100%;\n}\n\n.profile_text h1 {\n  font-size: 2.2em;\n  color: #da9f00;\n  font-weight: 600;\n}\n\n.privacy {\n  font-size: 0.8em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS1tYW5hZ2VtZW50L3Byb2ZpbGUtbWFuYWdlbWVudC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtBQUNKOztBQUNBO0VBQ0ksV0FBQTtBQUVKOztBQUNJO0VBQ0ksZ0JBQUE7RUFDQSxjQUFBO0VBQ0EsZ0JBQUE7QUFFUjs7QUFDQTtFQUNJLGdCQUFBO0FBRUoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9wcm9maWxlLW1hbmFnZW1lbnQvcHJvZmlsZS1tYW5hZ2VtZW50LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10aXRsZXtcbiAgICBtYXJnaW4tbGVmdDogNjVweFxufVxuYXBwLXByb2ZpbGUtZGV0YWlsc3tcbiAgICB3aWR0aDogMTAwJVxufVxuLnByb2ZpbGVfdGV4dHtcbiAgICBoMXtcbiAgICAgICAgZm9udC1zaXplOiAyLjJlbTtcbiAgICAgICAgY29sb3I6ICNkYTlmMDA7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgfVxufVxuLnByaXZhY3l7XG4gICAgZm9udC1zaXplOiAwLjhlbTtcbn0iXX0= */";
       /***/
     },
 
@@ -1631,38 +1708,35 @@
         _createClass(ProfileManagementPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this5 = this;
-
-            this.route.queryParams.subscribe(function (values) {
-              console.log(values.id);
-
-              if (values.id) {
-                _this5.userId = values.id; // values.id -> ID passed in params who details shall be shown on the front end
-                // this.authService.getUser -> Current User
-
-                if (values.id == _this5.authService.getUser._id) {
-                  _this5.httpService.get('customer/get/' + values.id).subscribe(function (res) {
-                    if (res.error == false) {
-                      _this5.setValues(res.response);
-                    }
-                  });
-                } else {
-                  _this5.setValues(_this5.authService.getUser);
-                }
-              } else _this5.authService.authenticate();
-            });
+            console.log('profile-management'); // this.route.queryParams.subscribe((values) => {
+            //   console.log(values.id);
+            //   if(values.id){
+            //     this.userId = values.id
+            //     // values.id -> ID passed in params who details shall be shown on the front end
+            //     // this.authService.getUser -> Current User
+            //     if(values.id == this.authService.getUser._id){
+            //       this.httpService.get('customer/get/'+values.id).subscribe((res: any)=>{
+            //         if(res.error == false){
+            //           this.setValues(res.response)
+            //         }
+            //       })
+            //     } else {
+            //       this.setValues(this.authService.getUser)
+            //     }
+            //   }
+            //   else
+            //     this.authService.authenticate()
+            // });
           }
         }, {
           key: "ngOnDestroy",
           value: function ngOnDestroy() {
             console.log('Destroyed');
-          }
-        }, {
-          key: "setValues",
-          value: function setValues(user) {
-            console.log(user);
-            this.UserDetails.name = user.name;
-          }
+          } // setValues(user){
+          //   console.log(user)
+          //   this.UserDetails.name = user.name
+          // }
+
         }, {
           key: "setUserDetails",
           value: function setUserDetails(details) {
@@ -1676,8 +1750,6 @@
         }, {
           key: "updateProfile",
           value: function updateProfile() {
-            var _this6 = this;
-
             if (!this.UserDetails.handle) {
               this.toast.simpletoast('Kindly Provide A User Handle');
               return;
@@ -1694,7 +1766,7 @@
             }
 
             if (!this.UserDetails.valid) {
-              this.toast.simpletoast('Kindly Provide Valid Input');
+              this.toast.simpletoast('Kindly Provide Valid Mobile Number And Handle');
               return;
             }
 
@@ -1714,14 +1786,12 @@
               show_age: this.ProfileDetails.dob,
               show_interests: this.ProfileDetails.showInterests
             };
-            console.log(reqBody);
-            this.httpService.post("customer/update", reqBody).subscribe(function (res) {
-              if (res.error == false) {
-                _this6.authService.setUser(res.response);
+            console.log(reqBody); // this.httpService.post("customer/update", reqBody).subscribe((res: any)=> {
+            //   if(res.error == false){
 
-                _this6.router.navigateByUrl('home');
-              }
-            });
+            this.authService.setUser(reqBody);
+            this.router.navigateByUrl('home'); //   }
+            // });
           }
         }]);
 

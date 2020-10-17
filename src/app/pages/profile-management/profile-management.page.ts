@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Platform } from "@ionic/angular";
+import { User } from 'src/app/Shared/Models/user';
 import { AuthService } from 'src/app/Shared/Services/Authentication/auth.service';
 import { HttpService } from "src/app/Shared/Services/HttpService/http.service";
 import { ToastService } from 'src/app/Shared/Services/Toast/toast.service';
@@ -15,17 +16,17 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
     handle: string;
     name: string;
     mobile: string;
-    dob: Number;
+    dob: string;
     valid: boolean
   };
   
   protected ProfileDetails: {
     interests: Array<string>;
     description: string;
-    displayPicture: Boolean;
-    showDescription: Boolean;
-    dob: Boolean;
-    showInterests: Boolean;
+    displayPicture: boolean;
+    showDescription: boolean;
+    dob: boolean;
+    showInterests: boolean;
   };
   
   private userId: string
@@ -42,40 +43,40 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
     });
     this.platform.backButton.isStopped = true;
   }
-
+  
   ngOnInit() {
-    this.route.queryParams.subscribe((values) => {
-      console.log(values.id);
-      if(values.id){
-        this.userId = values.id
+    console.log('profile-management')
+    // this.route.queryParams.subscribe((values) => {
+    //   console.log(values.id);
+    //   if(values.id){
+    //     this.userId = values.id
         
-        // values.id -> ID passed in params who details shall be shown on the front end
-        // this.authService.getUser -> Current User
+    //     // values.id -> ID passed in params who details shall be shown on the front end
+    //     // this.authService.getUser -> Current User
 
-        if(values.id == this.authService.getUser._id){
-          this.httpService.get('customer/get/'+values.id).subscribe((res: any)=>{
-            if(res.error == false){
-              this.setValues(res.response)
-            }
-          })
-        } else {
-          this.setValues(this.authService.getUser)
-        }
-      }
-      else
-        this.authService.authenticate()
-    });
+    //     if(values.id == this.authService.getUser._id){
+    //       this.httpService.get('customer/get/'+values.id).subscribe((res: any)=>{
+    //         if(res.error == false){
+    //           this.setValues(res.response)
+    //         }
+    //       })
+    //     } else {
+    //       this.setValues(this.authService.getUser)
+    //     }
+    //   }
+    //   else
+    //     this.authService.authenticate()
+    // });
   }
 
   ngOnDestroy(){
     console.log('Destroyed')
   }
 
-  setValues(user){
-    console.log(user)
-    this.UserDetails.name = user.name
-  }
-
+  // setValues(user){
+  //   console.log(user)
+  //   this.UserDetails.name = user.name
+  // }
   setUserDetails(details) {
     this.UserDetails = details;
   }
@@ -118,11 +119,11 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
       show_interests: this.ProfileDetails.showInterests,
     };
     console.log(reqBody)
-    this.httpService.post("customer/update", reqBody).subscribe((res: any)=> {
-      if(res.error == false){
-        this.authService.setUser(res.response)
+    // this.httpService.post("customer/update", reqBody).subscribe((res: any)=> {
+    //   if(res.error == false){
+        this.authService.setUser(reqBody)
         this.router.navigateByUrl('home')
-      }
-    });
+    //   }
+    // });
   }
 }

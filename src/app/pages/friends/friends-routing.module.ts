@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: FriendsPage
-  }
+  },
+  {
+    path: 'letters',
+    loadChildren: () => import('./../letters/letters.module').then(m => m.LettersPageModule)
+  },
 ];
 
 @NgModule({

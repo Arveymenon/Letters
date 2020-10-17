@@ -12,10 +12,10 @@
     <p><ion-icon color="warning" name="calendar-outline"></ion-icon> {{ getBirthday(user.dob) }}</p>
   </div>
   <div *ngIf="user.interests">
-    <p><ion-icon color="warning" name="globe-outline"></ion-icon> Interested in <span *ngFor="let interest of user.interests" class="interest">{{ interest }}</span></p>
+    <ion-icon color="warning" name="globe-outline"></ion-icon> <span color="warning" *ngFor="let interest of user.interests" class="interest">{{ interest }}</span>
   </div>
   <div *ngIf="user.description">
     <p>Subject: About User</p>
-    {{ user.description }}
+    <p>{{ user.description }}</p>
   </div><br>
 </div>

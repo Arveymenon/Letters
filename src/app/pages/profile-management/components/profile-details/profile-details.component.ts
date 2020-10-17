@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormControl, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/Shared/Services/Authentication/auth.service';
 
 @Component({
   selector: "app-profile-details",
@@ -22,8 +23,6 @@ export class ProfileDetailsComponent implements OnInit {
     { id: '5f72f16b6e321073dea34abe', interest: "Jogging" },
     { id: '5f72f17e6e321073dea34abf', interest: "Sleeping" },
   ];
-  protected key = 'id';
-  protected value = 'interest';
 
   protected description = new FormControl('')
   
@@ -35,7 +34,7 @@ export class ProfileDetailsComponent implements OnInit {
   protected showInterests = new FormControl(true)
 
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.values = {
@@ -46,6 +45,18 @@ export class ProfileDetailsComponent implements OnInit {
       displayPicture: this.displayPicture.value,
       dob: this.dob.value,
     }
+    this.authService.getUser.then((user: any)=>{
+      console.log(user)
+      if(user){
+        this.selectControl.setValue(user.interests)
+
+        this.description.setValue(user.description)
+        this.displayPicture.setValue(user.show_display_picture)
+        this.show_description.setValue(user.show_description)
+        this.dob.setValue(user.show_age)
+        this.showInterests.setValue(user.show_interests)
+      }
+    })
   }
 
   ngDoCheck() {

@@ -1,5 +1,40 @@
+:host{
+    --color: #fff;
+    --placeholder-color: #fff;
+}
+
+.ion-page{
+    background: var(--ion-color-dark);
+    color: #fff !important;
+}
+ion-header{
+    ion-toolbar{
+        color: #fff !important;
+    }
+}
 ion-item{
-    --background: #121212;
+    --background: var(--ion-color-dark);
         --color: #fff;
-        font-weight: 600;
+}
+ion-input, ion-textarea, ion-select, ion-datetime{
+    --color: #fff !important;
+    color: #fff !important;
+    font-weight: 600;
+    --placeholder-opacity: 1 !important;
+}
+ion-picker, ion-alert{
+    --background: var(--ion-color-dark) !important;
+    color: #fff !important;
+    --border-radius: 30px !important;
+}
+ion-icon{
+    color: var(--ion-color-warning);
+}
+ion-fab-button{
+    --background: var(--ion-color-dark) !important;
+}
+.parent_editer{
+    h1,h2,h3,h4,h5,h6,p{
+        color: #000;
+    }
 }

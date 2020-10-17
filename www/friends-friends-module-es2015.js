@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"ion-text-center\">\n    <ion-title>\n      My Friends\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item>\n    <ion-input placeholder=\"Search by handle\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"ion-activatable\" (click)='viewProfile()' style=\"position: relative;\">\n    <ion-icon slot=\"start\" name=\"person\"></ion-icon>\n    <ion-label>Lamiyah</ion-label>\n    <ion-ripple-effect></ion-ripple-effect>\n  </ion-item>\n  <ion-item (click)='viewProfile()'>\n    <ion-icon slot=\"start\" name=\"person\"></ion-icon>\n    <ion-label>Arvey Menon</ion-label>\n  </ion-item>\n  <ion-item (click)='viewProfile()'>\n    <!-- <ion-avatar slot=\"start\">\n      <img src=\"https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y\">\n    </ion-avatar> -->\n    <ion-icon slot=\"start\" name=\"person\"></ion-icon>\n    <ion-label>Pranav</ion-label>\n    </ion-item>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"ion-text-center\">\n    <ion-title>\n      My Friends\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item>\n    <ion-input placeholder=\"Search by handle\"></ion-input>\n  </ion-item>\n\n  <ion-item class=\"ion-activatable\" (click)='viewLetters()' style=\"position: relative;\">\n    <ion-avatar>\n      <img src=\"https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y\">\n    </ion-avatar>\n    <ion-label class=\"user\">\n      <h2>Lamiyah</h2>\n      <p>Desciprtion of Lamiyah</p>\n    </ion-label>\n    <ion-ripple-effect></ion-ripple-effect>\n  </ion-item>\n\n  <ion-item class=\"ion-activatable\" (click)='viewLetters()' style=\"position: relative;\">\n    <ion-avatar>\n      <img src=\"https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y\">\n    </ion-avatar>\n    <ion-label class=\"user\">\n      <h2 class=\"message\">Pranav</h2>\n      <p>Desciprtion of Pranav</p>\n    </ion-label>\n    <ion-badge slot=\"end\" color=\"dark\">2</ion-badge>\n    <ion-ripple-effect></ion-ripple-effect>\n  </ion-item>\n\n  <ion-item class=\"ion-activatable\" (click)='viewLetters()' style=\"position: relative;\">\n    <ion-avatar>\n      <img src=\"https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y\">\n    </ion-avatar>\n    <ion-label class=\"user\">\n      <h2>Arvey</h2>\n      <p>Desciprtion of Arvey</p>\n    </ion-label>\n    <ion-ripple-effect></ion-ripple-effect>\n  </ion-item>\n</ion-content>\n");
 
 /***/ }),
 
@@ -35,7 +35,11 @@ const routes = [
     {
         path: '',
         component: _friends_page__WEBPACK_IMPORTED_MODULE_3__["FriendsPage"]
-    }
+    },
+    {
+        path: 'letters',
+        loadChildren: () => __webpack_require__.e(/*! import() | letters-letters-module */ "letters-letters-module").then(__webpack_require__.bind(null, /*! ./../letters/letters.module */ "./src/app/pages/letters/letters.module.ts")).then(m => m.LettersPageModule)
+    },
 ];
 let FriendsPageRoutingModule = class FriendsPageRoutingModule {
 };
@@ -101,7 +105,7 @@ FriendsPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2ZyaWVuZHMvZnJpZW5kcy5wYWdlLnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".user {\n  padding-left: 17px;\n}\n.user h2 {\n  font-weight: 600;\n}\n.user .message {\n  font-weight: 800;\n}\nion-badge {\n  color: var(--ion-color-warning);\n  padding: 8px 10px;\n  border-radius: 15px;\n  box-shadow: 0px 0px 10px 0px #868686;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvZnJpZW5kcy9mcmllbmRzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFBO0FBQ0o7QUFBSTtFQUNJLGdCQUFBO0FBRVI7QUFBSTtFQUNJLGdCQUFBO0FBRVI7QUFFQTtFQUNJLCtCQUFBO0VBQ0EsaUJBQUE7RUFDQSxtQkFBQTtFQUNBLG9DQUFBO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9mcmllbmRzL2ZyaWVuZHMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnVzZXJ7XG4gICAgcGFkZGluZy1sZWZ0OiAxN3B4O1xuICAgIGgye1xuICAgICAgICBmb250LXdlaWdodDogNjAwO1xuICAgIH1cbiAgICAubWVzc2FnZXtcbiAgICAgICAgZm9udC13ZWlnaHQ6IDgwMDtcbiAgICB9XG59XG5cbmlvbi1iYWRnZXtcbiAgICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXdhcm5pbmcpO1xuICAgIHBhZGRpbmc6IDhweCAxMHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDE1cHg7XG4gICAgYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDBweCAjODY4Njg2O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -127,8 +131,9 @@ let FriendsPage = class FriendsPage {
     }
     ngOnInit() {
     }
-    viewProfile() {
-        this.router.navigateByUrl('view-profile');
+    viewLetters() {
+        this.router.navigateByUrl('friends/letters');
+        // this.router.navigateByUrl('view-profile')
     }
 };
 FriendsPage.ctorParameters = () => [

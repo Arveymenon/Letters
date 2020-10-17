@@ -16,7 +16,7 @@ export class MediaUploadService {
   constructor(
     public imagePicker: ImagePicker,
     private camera: Camera,
-    private base64: Base64,
+    private base64: Base64
     // public webview: WebView,
     ) { }
     
@@ -51,6 +51,30 @@ export class MediaUploadService {
     //     resolve('imagePath')
     //   })
     
+    // openCamera(){
+
+    //   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
+    //     result => {
+    //       alert(result.hasPermission);
+    //       if(!result.hasPermission) {
+    //         this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
+    //         .then( cam => {
+    //           alert('permission result '+ JSON.stringify(cam) );
+    //           this.selectFromCamera();
+    //         })
+    //         .catch( error => {
+    //           alert('permission error occured '+ JSON.stringify(error) );
+    //         });
+    //       } else {
+    //         this.selectFromCamera();
+    //       }
+    //     },
+    //     err => {
+    //       this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA); 
+    //     });
+    // }
+
+
     selectFromCamera() {
       return new Promise((resolve,reject)=>{
         const options: CameraOptions = {
@@ -59,19 +83,19 @@ export class MediaUploadService {
           encodingType: this.camera.EncodingType.JPEG,
           mediaType: this.camera.MediaType.PICTURE
         }
-        
+        console.log('Select pic')
         this.camera.getPicture(options).then((imageData) => {
           console.log(imageData);
           let imageURIs = imageData;
-          
-          let base64 = this.pathToBase64(imageURIs),
+          let base64 = this.pathToBase64(imageURIs);
+          let base64_2 = 'data:image/jpeg;base64,' + imageData,
               filename = new Date(),
               blob = this.dataURLtoBlob(base64,filename)
 
           console.log(filename, imageURIs)
           console.log(blob)
 
-            resolve({blob,base64, filename})
+            resolve({blob,base64_2, base64, filename})
             }, (err) => {
               console.log(err);
           });

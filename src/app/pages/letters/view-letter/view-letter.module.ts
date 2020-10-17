@@ -7,18 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { ViewLetterPageRoutingModule } from './view-letter-routing.module';
 
 import { ViewLetterPage } from './view-letter.page';
-import { SafeHtmlPipe } from 'src/app/Shared/Pipes/SafeHtmlPipe/safe-html.pipe';
+import { SafeHtmlPipeModule } from 'src/app/Shared/Pipes/SafeHtmlPipe/safe-html-pipe.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewLetterPageRoutingModule
+    ViewLetterPageRoutingModule,
+    SafeHtmlPipeModule
   ],
   declarations: [
-    ViewLetterPage,
-    SafeHtmlPipe
+    ViewLetterPage
   ]
 })
 export class ViewLetterPageModule {}

@@ -990,7 +990,7 @@ QuillModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInject
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title class=\"ion-text-center\">Start Writting</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!-- <div class=\"parent_editer\"> -->\n  <quill-editor theme=\"bubble\"></quill-editor>\n  <!-- </div> -->\n  <ion-fab class=\"write-letter\" vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" (click)=\"sendLetter()\">\n    <ion-fab-button color=\"warning\">\n      <ion-icon style=\"color: #fff\" name=\"paper-plane-outline\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n  <!-- <ion-button (click)=\"sendLetter()\">\n    Send<ion-icon name=\"paper-plane-outline\"></ion-icon>\n  </ion-button> -->\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title class=\"ion-text-center\">Start Writting</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!-- Select Friend -->\n  <ion-select placeholder=\"Select Friend\" interface=\"popover\" [formControl]=\"sendTo\">\n    <ion-select-option value=\"bacon\">Pranav</ion-select-option>\n    <ion-select-option value=\"olives\">Arul</ion-select-option>\n    <ion-select-option value=\"xcheese\">Lamiyah</ion-select-option>\n    <ion-select-option value=\"peppers\">Some other friend</ion-select-option>\n  </ion-select>\n\n  <div class=\"parent_editer\">\n    <quill-editor  [formControl]=\"letter\" theme=\"bubble\"></quill-editor>\n    <p class=\"ion-text-center margin-none editor_info\">Select Your Text To Add Styles</p>\n  </div>\n\n  <ion-fab class=\"write-letter\" vertical=\"bottom\" horizontal=\"end\" slot=\"fixed\" (click)=\"sendLetter()\">\n    <ion-fab-button>\n      <ion-icon  name=\"paper-plane-outline\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>\n");
 
 /***/ }),
 
@@ -1064,6 +1064,7 @@ WriteLetterPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])
         imports: [
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
             _write_letter_routing_module__WEBPACK_IMPORTED_MODULE_5__["WriteLetterPageRoutingModule"],
             ngx_quill__WEBPACK_IMPORTED_MODULE_7__["QuillModule"].forRoot({
@@ -1071,6 +1072,18 @@ WriteLetterPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])
                     syntax: false,
                     toolbar: [
                         ['bold', 'italic', 'underline', 'strike'],
+                        ['blockquote', 'code-block'],
+                        [{ 'header': 1 }, { 'header': 2 }],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        [{ 'script': 'sub' }, { 'script': 'super' }],
+                        [{ 'indent': '-1' }, { 'indent': '+1' }],
+                        [{ 'direction': 'ltr' }],
+                        [{ 'size': ['small', false, 'large', 'huge'] }],
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        [{ 'color': [] }, { 'background': [] }],
+                        [{ 'font': [] }],
+                        [{ 'align': [] }],
+                        ['clean'],
                     ]
                 }
             }),
@@ -1092,7 +1105,7 @@ WriteLetterPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".parent_editer {\n  margin: 20px;\n  border-radius: 10px;\n  box-shadow: 0px 0px 20px 0px #d0d0d0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbGV0dGVycy93cml0ZS1sZXR0ZXIvd3JpdGUtbGV0dGVyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7RUFDQSxtQkFBQTtFQUNBLG9DQUFBO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9sZXR0ZXJzL3dyaXRlLWxldHRlci93cml0ZS1sZXR0ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBhcmVudF9lZGl0ZXJ7XG4gICAgbWFyZ2luOiAyMHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XG4gICAgYm94LXNoYWRvdzogMHB4IDBweCAyMHB4IDBweCAjZDBkMGQwO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("p {\n  color: black !important;\n}\n\n.parent_editer {\n  height: 80%;\n  margin: 20px;\n  border-radius: 10px;\n  box-shadow: 0px 0px 20px 0px #404040;\n  background-color: var(--ion-color-light);\n}\n\n.parent_editer .editor_info {\n  margin: 0;\n  opacity: 0.5;\n  color: var(--ion-color-light) !important;\n  font-style: italic;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbGV0dGVycy93cml0ZS1sZXR0ZXIvd3JpdGUtbGV0dGVyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHVCQUFBO0FBQ0o7O0FBQ0E7RUFDSSxXQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBQ0Esb0NBQUE7RUFDQSx3Q0FBQTtBQUVKOztBQURJO0VBQ0ksU0FBQTtFQUNBLFlBQUE7RUFDQSx3Q0FBQTtFQUNBLGtCQUFBO0FBR1IiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9sZXR0ZXJzL3dyaXRlLWxldHRlci93cml0ZS1sZXR0ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsicHtcbiAgICBjb2xvcjogYmxhY2sgIWltcG9ydGFudDtcbn1cbi5wYXJlbnRfZWRpdGVye1xuICAgIGhlaWdodDogODAlO1xuICAgIG1hcmdpbjogMjBweDtcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICAgIGJveC1zaGFkb3c6IDBweCAwcHggMjBweCAwcHggIzQwNDA0MDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItbGlnaHQpO1xuICAgIC5lZGl0b3JfaW5mb3tcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBvcGFjaXR5OiAwLjU7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItbGlnaHQpICFpbXBvcnRhbnQ7XG4gICAgICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgICB9XG59Il19 */");
 
 /***/ }),
 
@@ -1108,14 +1121,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WriteLetterPage", function() { return WriteLetterPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/Shared/Services/Toast/toast.service */ "./src/app/Shared/Services/Toast/toast.service.ts");
+
+
 
 
 let WriteLetterPage = class WriteLetterPage {
-    constructor() { }
+    constructor(toast) {
+        this.toast = toast;
+        this.sendTo = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
+        this.letter = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
+    }
     ngOnInit() {
     }
+    sendLetter() {
+        console.log(this.sendTo.value, this.letter.value);
+        this.toast.simpletoast('Letter sent successfully');
+    }
 };
-WriteLetterPage.ctorParameters = () => [];
+WriteLetterPage.ctorParameters = () => [
+    { type: src_app_Shared_Services_Toast_toast_service__WEBPACK_IMPORTED_MODULE_3__["ToastService"] }
+];
 WriteLetterPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-write-letter',

@@ -42,7 +42,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-content class=\"displayContents loginPage\">\n  <div class=\"section_one\">\n    <div class=\"parent_text_box\">\n      <!-- <div class=\"text\" #textBox id=\"text_box\">Penpal Letters</div> -->\n      <div class=\"text\" #textBox id=\"text_box\"></div>\n      </div>\n  </div>\n  <div class=\"login-form\">\n      <app-input *ngIf=\"loginStage == 1\" [control]=\"email\" placeholder=\"Email\"></app-input>\n      <app-input *ngIf=\"loginStage == 2\" [control]=\"otp\" max=\"6\" placeholder=\"OTP\"></app-input>\n      \n      <ion-button (click)=\"login()\" [disabled]='!email.valid' color=\"primary\" expand=\"block\">{{ loginStage == 1 ? 'Send OTP' : 'Submit' }}</ion-button>\n      <p class=\"ion-text-center resend-otp\" *ngIf=\"loginStage == 2\" (click)=\"resendOtp()\">Resend OTP</p>\n    </div>\n</ion-content>";
+      __webpack_exports__["default"] = "<ion-content class=\"displayContents loginPage\">\n  <div class=\"section_one\">\n    <div class=\"parent_text_box\">\n      <!-- <div class=\"text\" #textBox id=\"text_box\">Penpal Letters</div> -->\n      <div class=\"text\" #textBox id=\"text_box\"></div>\n      </div>\n  </div>\n  <div class=\"login-form\">\n      <app-input *ngIf=\"loginStage == 1\" [control]=\"email\" placeholder=\"Email\"></app-input>\n      <app-input *ngIf=\"loginStage == 2\" [control]=\"otp\" max=\"6\" placeholder=\"OTP\"></app-input>\n      \n      <ion-button (click)=\"login()\" expand=\"block\">{{ loginStage == 1 ? 'Send OTP' : 'Submit' }}</ion-button>\n      <p class=\"ion-text-center resend-otp\" *ngIf=\"loginStage == 2\" (click)=\"resendOtp()\">Resend OTP</p>\n    </div>\n</ion-content>";
       /***/
     },
 
@@ -772,7 +772,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = ".loginPage {\n  --background: url('background5.png') 0 0/100% 100% no-repeat;\n}\n.loginPage .section_one {\n  height: 60%;\n  position: relative;\n}\n.loginPage .section_one .parent_text_box {\n  position: absolute;\n  top: 50%;\n  width: 100%;\n  text-align: center;\n}\n.loginPage .section_one .parent_text_box .text {\n  font-size: 5.5em;\n  font-family: \"amstagram\";\n  color: #ffc409;\n  padding-left: 27%;\n  width: 86%;\n  height: 100px;\n}\n.loginPage .login-form {\n  height: 40%;\n  width: 50%;\n  display: block;\n  margin-left: 25%;\n}\n.loginPage .resend-otp {\n  margin-top: 42%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbG9naW4vbG9naW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksNERBQUE7QUFDSjtBQUFJO0VBQ0ksV0FBQTtFQUNBLGtCQUFBO0FBRVI7QUFEUTtFQUNJLGtCQUFBO0VBQ0EsUUFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtBQUdaO0FBS1k7RUFDSSxnQkFBQTtFQUNBLHdCQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0VBQ0EsVUFBQTtFQUNBLGFBQUE7QUFIaEI7QUFRSTtFQUNJLFdBQUE7RUFDQSxVQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0FBTlI7QUFRSTtFQUNJLGVBQUE7QUFOUiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2xvZ2luL2xvZ2luLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5sb2dpblBhZ2V7XG4gICAgLS1iYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvYmFja2dyb3VuZF9pbWFnZXMvYmFja2dyb3VuZDUucG5nXCIpIDAgMC8xMDAlIDEwMCUgbm8tcmVwZWF0O1xuICAgIC5zZWN0aW9uX29uZXtcbiAgICAgICAgaGVpZ2h0OiA2MCU7XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgLnBhcmVudF90ZXh0X2JveHtcbiAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICAgIHRvcDogNTAlO1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgICAgICBcbiAgICAgICAgICAgIC8vIC50ZXh0e1xuICAgICAgICAgICAgLy8gICAgIGZvbnQtc2l6ZTogNS41ZW07XG4gICAgICAgICAgICAvLyAgICAgZm9udC1mYW1pbHk6ICdhbXN0YWdyYW0nO1xuICAgICAgICAgICAgLy8gICAgIGNvbG9yOiAjZmZjNDA5O1xuICAgICAgICAgICAgLy8gICAgIGhlaWdodDogMTAwcHg7XG4gICAgICAgICAgICAvLyB9XG4gICAgICAgICAgICAudGV4dHtcbiAgICAgICAgICAgICAgICBmb250LXNpemU6IDUuNWVtO1xuICAgICAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAnYW1zdGFncmFtJztcbiAgICAgICAgICAgICAgICBjb2xvcjogI2ZmYzQwOTtcbiAgICAgICAgICAgICAgICBwYWRkaW5nLWxlZnQ6IDI3JTtcbiAgICAgICAgICAgICAgICB3aWR0aDogODYlO1xuICAgICAgICAgICAgICAgIGhlaWdodDogMTAwcHg7XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICB9XG4gICAgXG4gICAgLmxvZ2luLWZvcm17XG4gICAgICAgIGhlaWdodDogNDAlO1xuICAgICAgICB3aWR0aDogNTAlO1xuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgICAgbWFyZ2luLWxlZnQ6IDI1JTtcbiAgICB9XG4gICAgLnJlc2VuZC1vdHB7XG4gICAgICAgIG1hcmdpbi10b3A6IDQyJTtcbiAgICB9XG59Il19 */";
+      __webpack_exports__["default"] = ".loginPage {\n  --background: url('background5.png') 0 0/100% 100% no-repeat;\n}\n.loginPage .section_one {\n  height: 60%;\n  position: relative;\n}\n.loginPage .section_one .parent_text_box {\n  position: absolute;\n  top: 50%;\n  width: 100%;\n  text-align: center;\n}\n.loginPage .section_one .parent_text_box .text {\n  font-size: 5.5em;\n  font-family: \"amstagram\";\n  color: #ffc409;\n  padding-left: 30%;\n  width: 86%;\n  height: 100px;\n}\n.loginPage .login-form {\n  height: 40%;\n  width: 50%;\n  display: block;\n  margin-left: 25%;\n}\n.loginPage .resend-otp {\n  margin-top: 42%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbG9naW4vbG9naW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksNERBQUE7QUFDSjtBQUFJO0VBQ0ksV0FBQTtFQUNBLGtCQUFBO0FBRVI7QUFEUTtFQUNJLGtCQUFBO0VBQ0EsUUFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtBQUdaO0FBS1k7RUFDSSxnQkFBQTtFQUNBLHdCQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0VBQ0EsVUFBQTtFQUNBLGFBQUE7QUFIaEI7QUFRSTtFQUNJLFdBQUE7RUFDQSxVQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0FBTlI7QUFRSTtFQUNJLGVBQUE7QUFOUiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2xvZ2luL2xvZ2luLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5sb2dpblBhZ2V7XG4gICAgLS1iYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvYmFja2dyb3VuZF9pbWFnZXMvYmFja2dyb3VuZDUucG5nXCIpIDAgMC8xMDAlIDEwMCUgbm8tcmVwZWF0O1xuICAgIC5zZWN0aW9uX29uZXtcbiAgICAgICAgaGVpZ2h0OiA2MCU7XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgLnBhcmVudF90ZXh0X2JveHtcbiAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICAgIHRvcDogNTAlO1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgICAgICBcbiAgICAgICAgICAgIC8vIC50ZXh0e1xuICAgICAgICAgICAgLy8gICAgIGZvbnQtc2l6ZTogNS41ZW07XG4gICAgICAgICAgICAvLyAgICAgZm9udC1mYW1pbHk6ICdhbXN0YWdyYW0nO1xuICAgICAgICAgICAgLy8gICAgIGNvbG9yOiAjZmZjNDA5O1xuICAgICAgICAgICAgLy8gICAgIGhlaWdodDogMTAwcHg7XG4gICAgICAgICAgICAvLyB9XG4gICAgICAgICAgICAudGV4dHtcbiAgICAgICAgICAgICAgICBmb250LXNpemU6IDUuNWVtO1xuICAgICAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAnYW1zdGFncmFtJztcbiAgICAgICAgICAgICAgICBjb2xvcjogI2ZmYzQwOTtcbiAgICAgICAgICAgICAgICBwYWRkaW5nLWxlZnQ6IDMwJTtcbiAgICAgICAgICAgICAgICB3aWR0aDogODYlO1xuICAgICAgICAgICAgICAgIGhlaWdodDogMTAwcHg7XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICB9XG4gICAgXG4gICAgLmxvZ2luLWZvcm17XG4gICAgICAgIGhlaWdodDogNDAlO1xuICAgICAgICB3aWR0aDogNTAlO1xuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgICAgbWFyZ2luLWxlZnQ6IDI1JTtcbiAgICB9XG4gICAgLnJlc2VuZC1vdHB7XG4gICAgICAgIG1hcmdpbi10b3A6IDQyJTtcbiAgICB9XG59Il19 */";
       /***/
     },
 
@@ -865,11 +865,12 @@
         _createClass(LoginPage, [{
           key: "ngOnInit",
           value: function ngOnInit() {
+            console.log('login');
             var vara = new vara__WEBPACK_IMPORTED_MODULE_7__("#text_box", "https://raw.githubusercontent.com/akzhy/Vara/master/fonts/Parisienne/Parisienne.json", [{
               text: "Penpal Letters",
-              fontSize: 60,
+              fontSize: 40,
               strokeWidth: 2.5,
-              color: "#ffc409",
+              color: "#fff700",
               id: "",
               duration: 2000,
               textAlign: "left",
@@ -887,7 +888,7 @@
               // The options given below will be applicable to every text created,
               // however they will not override the options set above.
               // They will work as secondary options.
-              fontSize: 24,
+              fontSize: 15,
               strokeWidth: .5,
               color: "black",
               duration: 2000,
@@ -900,22 +901,24 @@
         }, {
           key: "login",
           value: function login() {
-            console.log(this.email.valid);
-
-            if (this.loginStage == 1) {
-              this.randomOtp = Math.round(Math.random() * 1000);
-              console.log(this.randomOtp); // should only send OTP
-
-              this.authenticate();
-            } else {
-              if (this.otp.value == this.randomOtp) {
-                this.auth.authenticate();
-              } else {
-                this.toast.simpletoast('Invalid OTP');
-              }
-            }
-
-            return;
+            //   if (this.loginStage == 1) {
+            //     this.randomOtp = Math.round(Math.random() * 1000);
+            //     console.log(this.randomOtp);
+            //     // should only send OTP
+            //     if(this.email.valid){
+            //       this.authenticate()
+            //     }else{
+            //       this.toast.simpletoast('Kindly Provide A Valid Email ID')
+            //     }
+            //   } else {
+            //     if (this.otp.value == this.randomOtp) {
+            //       this.auth.authenticate();
+            //     } else {
+            //       this.toast.simpletoast('Invalid OTP')
+            //     }
+            //   }
+            //   return
+            this.router.navigateByUrl('profile-management');
           }
         }, {
           key: "authenticate",

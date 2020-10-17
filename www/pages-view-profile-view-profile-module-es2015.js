@@ -21580,7 +21580,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"ion-padding slide-over height-100 userDetails\">\n  <div>\n    <p><b style=\"color: var(--ion-color-warning)\">#</b>   {{ user.handle }}</p>\n  </div>\n  <div>\n    <p><ion-icon color=\"warning\" name=\"at-outline\"></ion-icon>   {{ user.email }}</p>\n  </div>\n  <div>\n    <p><ion-icon color=\"warning\" name=\"call-outline\"></ion-icon>  {{ user.mobile }}</p>\n  </div>\n  <div *ngIf=\"user.dob\">\n    <p><ion-icon color=\"warning\" name=\"calendar-outline\"></ion-icon> {{ getBirthday(user.dob) }}</p>\n  </div>\n  <div *ngIf=\"user.interests\">\n    <p><ion-icon color=\"warning\" name=\"globe-outline\"></ion-icon> Interested in <span *ngFor=\"let interest of user.interests\" class=\"interest\">{{ interest }}</span></p>\n  </div>\n  <div *ngIf=\"user.description\">\n    <p>Subject: About User</p>\n    {{ user.description }}\n  </div><br>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"ion-padding slide-over height-100 userDetails\">\n  <div>\n    <p><b style=\"color: var(--ion-color-warning)\">#</b>   {{ user.handle }}</p>\n  </div>\n  <div>\n    <p><ion-icon color=\"warning\" name=\"at-outline\"></ion-icon>   {{ user.email }}</p>\n  </div>\n  <div>\n    <p><ion-icon color=\"warning\" name=\"call-outline\"></ion-icon>  {{ user.mobile }}</p>\n  </div>\n  <div *ngIf=\"user.dob\">\n    <p><ion-icon color=\"warning\" name=\"calendar-outline\"></ion-icon> {{ getBirthday(user.dob) }}</p>\n  </div>\n  <div *ngIf=\"user.interests\">\n    <ion-icon color=\"warning\" name=\"globe-outline\"></ion-icon> <span color=\"warning\" *ngFor=\"let interest of user.interests\" class=\"interest\">{{ interest }}</span>\n  </div>\n  <div *ngIf=\"user.description\">\n    <p>Subject: About User</p>\n    <p>{{ user.description }}</p>\n  </div><br>\n</div>");
 
 /***/ }),
 
@@ -21652,7 +21652,7 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".userDetails {\n  font-size: 1.2em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvdmlldy1wcm9maWxlL2NvbXBvbmVudHMvdXNlci1kZXRhaWxzL3VzZXItZGV0YWlscy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy92aWV3LXByb2ZpbGUvY29tcG9uZW50cy91c2VyLWRldGFpbHMvdXNlci1kZXRhaWxzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnVzZXJEZXRhaWxze1xuICAgIGZvbnQtc2l6ZTogMS4yZW07XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".userDetails {\n  font-size: 1.2em;\n}\n\n.interest {\n  background: var(--ion-color-dark);\n  color: var(--ion-color-warning);\n  font-size: 0.8em;\n  font-weight: 600;\n  padding: 4px;\n  border-radius: 25px;\n  margin: 0 6px;\n  box-shadow: 0 0 6px #9a9a9a;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvdmlldy1wcm9maWxlL2NvbXBvbmVudHMvdXNlci1kZXRhaWxzL3VzZXItZGV0YWlscy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFBO0FBQ0o7O0FBQ0E7RUFDSSxpQ0FBQTtFQUNBLCtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxtQkFBQTtFQUNBLGFBQUE7RUFDQSwyQkFBQTtBQUVKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvdmlldy1wcm9maWxlL2NvbXBvbmVudHMvdXNlci1kZXRhaWxzL3VzZXItZGV0YWlscy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi51c2VyRGV0YWlsc3tcbiAgICBmb250LXNpemU6IDEuMmVtO1xufVxuLmludGVyZXN0e1xuICAgIGJhY2tncm91bmQ6IHZhcigtLWlvbi1jb2xvci1kYXJrKTtcbiAgICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXdhcm5pbmcpO1xuICAgIGZvbnQtc2l6ZTogMC44ZW07XG4gICAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgICBwYWRkaW5nOiA0cHg7XG4gICAgYm9yZGVyLXJhZGl1czogMjVweDtcbiAgICBtYXJnaW46IDAgNnB4O1xuICAgIGJveC1zaGFkb3c6IDAgMCA2cHggIzlhOWE5YTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -21862,11 +21862,11 @@ let ViewProfilePage = class ViewProfilePage {
         this.user = {
             _id: '',
             name: 'Arvey',
-            handle: 'Testing',
+            handle: 'RV',
             email: 'arvey@gmail.com',
             mobile: '9920807002',
             dob: new Date(),
-            interests: ['Lovey', 'dovey'],
+            interests: ['Lovey', 'Dovey'],
             description: 'kaafi data',
         };
     }

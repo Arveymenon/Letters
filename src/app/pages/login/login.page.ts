@@ -29,9 +29,10 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log('login')
     let vara = new Vara("#text_box",`https://raw.githubusercontent.com/akzhy/Vara/master/fonts/Parisienne/Parisienne.json`,[{
       text:"Penpal Letters", // String, text to be shown
-      fontSize: 60, // Number, size of the text
+      fontSize: 40, // Number, size of the text
       strokeWidth: 2.5, // Width / Thickness of the stroke
       color: "#fff700", // Color of the text
       id:"", // String or integer, for if animations are called manually or when using the get() method. Default is the index of the object.
@@ -51,7 +52,7 @@ export class LoginPage implements OnInit {
       // The options given below will be applicable to every text created,
       // however they will not override the options set above.
       // They will work as secondary options.
-      fontSize:24, // Number, size of the text
+      fontSize: 15, // Number, size of the text
       strokeWidth:.5, // Width / Thickness of the stroke
       color:"black", // Color of the text
       duration:2000, // Number, Duration of the animation in milliseconds
@@ -63,20 +64,24 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    console.log(this.email.valid)
-    if (this.loginStage == 1) {
-      this.randomOtp = Math.round(Math.random() * 1000);
-      console.log(this.randomOtp);
-      // should only send OTP
-      this.authenticate()
-    } else {
-      if (this.otp.value == this.randomOtp) {
-        this.auth.authenticate();
-      } else {
-        this.toast.simpletoast('Invalid OTP')
-      }
-    }
-    return
+  //   if (this.loginStage == 1) {
+  //     this.randomOtp = Math.round(Math.random() * 1000);
+  //     console.log(this.randomOtp);
+  //     // should only send OTP
+  //     if(this.email.valid){
+  //       this.authenticate()
+  //     }else{
+  //       this.toast.simpletoast('Kindly Provide A Valid Email ID')
+  //     }
+  //   } else {
+  //     if (this.otp.value == this.randomOtp) {
+  //       this.auth.authenticate();
+  //     } else {
+  //       this.toast.simpletoast('Invalid OTP')
+  //     }
+  //   }
+  //   return
+    this.router.navigateByUrl('profile-management');
   }
 
   authenticate(){

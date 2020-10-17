@@ -11,11 +11,11 @@ export class ViewProfilePage implements OnInit {
   user = {
     _id: '',
     name: 'Arvey',
-    handle: 'Testing',
+    handle: 'RV',
     email: 'arvey@gmail.com',
     mobile: '9920807002',
     dob: new Date(),
-    interests: ['Lovey', 'dovey'],
+    interests: ['Lovey', 'Dovey'],
     description: 'kaafi data',
   }
   

@@ -1,0 +1,16 @@
+.user{
+    padding-left: 17px;
+    h2{
+        font-weight: 600;
+    }
+    .message{
+        font-weight: 800;
+    }
+}
+
+ion-badge{
+    color: var(--ion-color-warning);
+    padding: 8px 10px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px #868686;
+}

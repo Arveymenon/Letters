@@ -49,14 +49,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-telerik-imagepicker": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-telerik-imagepicker@^2.3.5"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-sqlite-storage": {
     "source": {
       "type": "registry",
@@ -65,18 +57,18 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-camera": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-camera@4.1.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "com-badrit-base64": {
     "source": {
       "type": "registry",
       "id": "com-badrit-base64@^0.2.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-camera": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-camera@4.1.0"
     },
     "is_top_level": true,
     "variables": {}

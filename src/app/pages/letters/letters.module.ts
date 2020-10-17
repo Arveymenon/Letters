@@ -7,18 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { LettersPageRoutingModule } from './letters-routing.module';
 
 import { LettersPage } from './letters.page';
-import { SafeHtmlPipe } from 'src/app/Shared/Pipes/SafeHtmlPipe/safe-html.pipe';
+import { SafeHtmlPipeModule } from 'src/app/Shared/Pipes/SafeHtmlPipe/safe-html-pipe.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LettersPageRoutingModule
+    LettersPageRoutingModule,
+    SafeHtmlPipeModule
   ],
   declarations: [
     LettersPage,
-    SafeHtmlPipe
   ]
 })
 export class LettersPageModule {}

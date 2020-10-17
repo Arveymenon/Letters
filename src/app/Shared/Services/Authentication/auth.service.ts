@@ -44,7 +44,8 @@ export class AuthService {
         email: user.email,
         mobile: user.mobile,
       };
-      this.storage.set("user", User).then(() => {
+      this.storage.set("user", user).then(() => {
+        this.user = user
         resolve(User);
       });
     });
@@ -71,5 +72,11 @@ export class AuthService {
   }
 
 
-  get getUser(): User{ return this.user }
+  get getUser(){ 
+    return new Promise((res, rej)=>{
+      this.storage.get('user').then((user: User)=>{
+        res(user)
+      })
+    })
+  }
 }

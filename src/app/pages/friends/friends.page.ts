@@ -15,8 +15,9 @@ export class FriendsPage implements OnInit {
   ngOnInit() {
   }
 
-  viewProfile(){
-    this.router.navigateByUrl('view-profile')
+  viewLetters(){
+    this.router.navigateByUrl('friends/letters')
+    // this.router.navigateByUrl('view-profile')
   }
 
 }

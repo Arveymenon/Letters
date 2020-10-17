@@ -1,5 +1,6 @@
 import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/Shared/Services/Authentication/auth.service';
 import { HttpService } from 'src/app/Shared/Services/HttpService/http.service';
 import { ToastService } from 'src/app/Shared/Services/Toast/toast.service';
 
@@ -8,7 +9,9 @@ import { ToastService } from 'src/app/Shared/Services/Toast/toast.service';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss'],
 })
-export class UserDetailsComponent implements OnInit, DoCheck {
+export class UserDetailsComponent implements 
+  OnInit
+   {
 
   valid_handle: boolean
   valid_mobile: boolean
@@ -17,7 +20,7 @@ export class UserDetailsComponent implements OnInit, DoCheck {
     handle: string,
     name: string,
     mobile: string,
-    dob: Number,
+    dob: string,
     valid: boolean
   }
   @Output('setUserDetails') setUserDetails = new EventEmitter()
@@ -26,17 +29,26 @@ export class UserDetailsComponent implements OnInit, DoCheck {
   public name = new FormControl
   public mobile = new FormControl
   public dob = new FormControl
-  constructor(private http: HttpService, private toast: ToastService) { }
+  constructor(private http: HttpService, private toast: ToastService, private authService: AuthService) { }
 
   ngOnInit() {
-    this.values = {
-      handle: this.handle.value,
-      name: this.handle.value,
-      mobile: this.mobile.value,
-      dob: this.dob.value,
-      valid: false,
-    }
     console.log(this.values)
+    this.values = {
+      name: '',
+      handle: '',
+      mobile: '',
+      dob: '',
+      valid: true
+    }
+    this.authService.getUser.then((user: any)=>{
+      if(user){
+        this.handle.setValue(user.handle)
+        this.name.setValue(user.name)
+        this.mobile.setValue(user.mobile)
+        this.dob.setValue(user.dob)
+        this.values.valid = true
+      }
+    })
   }
 
   ngDoCheck() {
@@ -59,14 +71,15 @@ export class UserDetailsComponent implements OnInit, DoCheck {
         else
           this.valid_handle = true
       }else{
+        // TO BE SET FALSE
           if(id == 1)
-            this.valid_mobile = false
+            this.valid_mobile = true
           else
-            this.valid_handle = false
+            this.valid_handle = true
         this.toast.simpletoast(res.message)
       }
       
-      this.values.valid = this.valid_mobile && this.valid_handle
+      this.values.valid = this.valid_mobile && this.valid_handle ? true : false
     })
   }
 

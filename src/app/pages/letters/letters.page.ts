@@ -16,7 +16,10 @@ export class LettersPage implements OnInit {
     console.log(this.letters)
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.router.url) 
+
+  }
 
   doReorder(ev: any) {
     // Before complete is called with the items they will remain in the
@@ -40,12 +43,13 @@ export class LettersPage implements OnInit {
     this.router.navigateByUrl('/home/letters/write')
   }
 
-  logout(){
-    this.auth.logout()
+  viewProfile(){
+    this.router.navigateByUrl('view-profile')
   }
 
   letters = [
         {
+        "read": true,
         "message": "<div style='color: red'>1 Hey bro!<br>How are you man! Been a while since I wrote to you.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets co </div>",
          "from": {
              "id": "2346576879809d7f87e0g1",
@@ -61,11 +65,12 @@ export class LettersPage implements OnInit {
             }
         },
         {
+          "read": false,
           "message": "<div>2 Hey bro!<br>How are you man! Been a while since I wrote to you Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets co</div>",
           "from": {
              "id": "2346576879809d7f87e0g2",
              "handle": "Me",
-             "name": "Someone",
+             "name": "Beedu",
              "mobile": "9902807002",
              "privacy" : {
                  "show_name": true,
@@ -76,11 +81,12 @@ export class LettersPage implements OnInit {
           }
         },
         {
+          "read": true,
           "message": "<div>3 Hey bro!<br>How are you man! Been a while since I wrote to you Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets co</div>",
           "from": {
              "id": "2346576879809d7f87e0g3",
              "handle": "Me",
-             "name": "Someone",
+             "name": "This Guy",
              "mobile": "9902807002",
              "privacy" : {
                  "show_name": true,

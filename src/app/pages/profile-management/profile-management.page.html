@@ -1,8 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="ion-text-center">
+    <!-- <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon color="dark" slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
     <ion-title>
       Profile Manage
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="authService.logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -24,7 +34,7 @@
 
       <!-- About User -->
       <ion-row class="lg-padding">
-        <p><b>Subject:</b> Hey {{UserDetails.handle}}! Tell Us Something about yourself</p>
+        <p *ngIf="UserDetails"><b>Subject:</b> Hey {{UserDetails.handle}}! Tell Us Something about yourself</p>
           <app-profile-details (setProfileDetails)="setProfileDetails($event)"></app-profile-details>
       </ion-row>
         
@@ -32,5 +42,5 @@
 
 <ion-footer>
     <p class="ion-text-center privacy">Kindly Check Details You Want To Show Your New Penpals</p>
-    <ion-button color="primary" expand="block" (click)="updateProfile()">Send</ion-button>
+    <ion-button expand="block" (click)="updateProfile()">Update Profile</ion-button>
 </ion-footer>

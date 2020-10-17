@@ -9,44 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Sent By: </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card class=\"letter\">\n    <div [innerHTML]=\"message | safeHtml\"></div>\n  </ion-card>\n</ion-content>\n");
-
-/***/ }),
-
-/***/ "./src/app/Shared/Pipes/SafeHtmlPipe/safe-html.pipe.ts":
-/*!*************************************************************!*\
-  !*** ./src/app/Shared/Pipes/SafeHtmlPipe/safe-html.pipe.ts ***!
-  \*************************************************************/
-/*! exports provided: SafeHtmlPipe */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SafeHtmlPipe", function() { return SafeHtmlPipe; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
-
-
-
-let SafeHtmlPipe = class SafeHtmlPipe {
-    constructor(sanitizer) {
-        this.sanitizer = sanitizer;
-    }
-    transform(value, ...args) {
-        return this.sanitizer.bypassSecurityTrustHtml(value);
-    }
-};
-SafeHtmlPipe.ctorParameters = () => [
-    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"] }
-];
-SafeHtmlPipe = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
-        name: 'safeHtml'
-    })
-], SafeHtmlPipe);
-
-
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Sent By: Arvey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card class=\"letter\">\n    <div [innerHTML]=\"message | safeHtml\"></div>\n  </ion-card>\n</ion-content>\n");
 
 /***/ }),
 
@@ -104,7 +67,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 /* harmony import */ var _view_letter_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./view-letter-routing.module */ "./src/app/pages/letters/view-letter/view-letter-routing.module.ts");
 /* harmony import */ var _view_letter_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./view-letter.page */ "./src/app/pages/letters/view-letter/view-letter.page.ts");
-/* harmony import */ var src_app_Shared_Pipes_SafeHtmlPipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/Shared/Pipes/SafeHtmlPipe/safe-html.pipe */ "./src/app/Shared/Pipes/SafeHtmlPipe/safe-html.pipe.ts");
+/* harmony import */ var src_app_Shared_Pipes_SafeHtmlPipe_safe_html_pipe_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/Shared/Pipes/SafeHtmlPipe/safe-html-pipe.module */ "./src/app/Shared/Pipes/SafeHtmlPipe/safe-html-pipe.module.ts");
 
 
 
@@ -121,11 +84,11 @@ ViewLetterPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])(
             _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
-            _view_letter_routing_module__WEBPACK_IMPORTED_MODULE_5__["ViewLetterPageRoutingModule"]
+            _view_letter_routing_module__WEBPACK_IMPORTED_MODULE_5__["ViewLetterPageRoutingModule"],
+            src_app_Shared_Pipes_SafeHtmlPipe_safe_html_pipe_module__WEBPACK_IMPORTED_MODULE_7__["SafeHtmlPipeModule"]
         ],
         declarations: [
-            _view_letter_page__WEBPACK_IMPORTED_MODULE_6__["ViewLetterPage"],
-            src_app_Shared_Pipes_SafeHtmlPipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_7__["SafeHtmlPipe"]
+            _view_letter_page__WEBPACK_IMPORTED_MODULE_6__["ViewLetterPage"]
         ]
     })
 ], ViewLetterPageModule);
@@ -143,7 +106,7 @@ ViewLetterPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])(
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".letter {\n  padding: 20px;\n  margin: 30px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbGV0dGVycy92aWV3LWxldHRlci92aWV3LWxldHRlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxhQUFBO0VBQ0EsWUFBQTtBQUNKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbGV0dGVycy92aWV3LWxldHRlci92aWV3LWxldHRlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGV0dGVye1xuICAgIHBhZGRpbmc6IDIwcHg7XG4gICAgbWFyZ2luOiAzMHB4O1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".letter {\n  --background: var(--ion-color-light);\n  padding: 20px;\n  margin: 30px;\n  border-radius: 10px;\n  box-shadow: 0px 0px 8px 0px #c3c3c3;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbGV0dGVycy92aWV3LWxldHRlci92aWV3LWxldHRlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxvQ0FBQTtFQUNBLGFBQUE7RUFDQSxZQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQ0FBQTtBQUNKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbGV0dGVycy92aWV3LWxldHRlci92aWV3LWxldHRlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGV0dGVye1xuICAgIC0tYmFja2dyb3VuZDogdmFyKC0taW9uLWNvbG9yLWxpZ2h0KTtcbiAgICBwYWRkaW5nOiAyMHB4O1xuICAgIG1hcmdpbjogMzBweDtcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICAgIGJveC1zaGFkb3c6IDBweCAwcHggOHB4IDBweCAjYzNjM2MzO1xufSJdfQ== */");
 
 /***/ }),
 

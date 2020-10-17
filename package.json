@@ -32,8 +32,8 @@
     "@ionic/storage": "^2.3.1",
     "com-badrit-base64": "^0.2.0",
     "cordova-android": "8.1.0",
+    "cordova-ios": "5.1.1",
     "cordova-plugin-camera": "^4.1.0",
-    "cordova-plugin-telerik-imagepicker": "^2.3.5",
     "cordova-sqlite-storage": "^5.1.0",
     "moment": "^2.29.1",
     "ngx-quill": "^12.0.1",
@@ -84,13 +84,14 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-sqlite-storage": {},
+      "com-badrit-base64": {},
       "cordova-plugin-camera": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
-      },
-      "com-badrit-base64": {}
+      }
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
