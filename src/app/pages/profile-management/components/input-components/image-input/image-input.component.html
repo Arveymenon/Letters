@@ -8,7 +8,7 @@
       <img [src]="image">
     </div>
     <!-- Input Image -->
-  <div class="image" *ngIf="!image" (click)='uploadImageOption()'>
+  <div class="image" *ngIf="!image">
       <input type='file' class="hidden">
       <ion-icon name='camera' class="camera-icon"></ion-icon>
       <div class="add-icon-parent">

@@ -9,14 +9,14 @@ import { ToastService } from 'src/app/Shared/Services/Toast/toast.service';
 })
 export class WriteLetterPage implements OnInit {
 
-  protected sendTo = new FormControl()
-  protected letter = new FormControl()
+  public sendTo = new FormControl()
+  public letter = new FormControl()
   constructor(private toast: ToastService) { }
 
   ngOnInit() {
   }
 
-  protected sendLetter(){
+  public sendLetter(){
     console.log(this.sendTo.value, this.letter.value)
     this.toast.simpletoast('Letter sent successfully')
   }

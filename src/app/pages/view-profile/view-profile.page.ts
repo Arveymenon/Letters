@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
 import { User } from 'src/app/Shared/Models/user';
+import { UserOptionsComponent } from './components/user-options/user-options.component';
 
 @Component({
   selector: 'app-view-profile',
@@ -19,9 +21,19 @@ export class ViewProfilePage implements OnInit {
     description: 'kaafi data',
   }
   
-  constructor() { }
+  constructor(private popoverController: PopoverController) { }
   
   ngOnInit() {
+  }
+
+  async showOptions(ev: any){
+      const popover = await this.popoverController.create({
+        component: UserOptionsComponent,
+        cssClass: 'my-custom-class',
+        event: ev,
+        translucent: true
+      });
+      return await popover.present();
   }
 
 }

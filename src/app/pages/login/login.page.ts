@@ -15,12 +15,12 @@ import * as Vara from 'vara'
 })
 export class LoginPage implements OnInit {
   // ViewChild(textBox): any;
-  loginStage = 1;
-  email = new FormControl('',Validators.required);
-
+  public loginStage = 1;
   protected user: User;
-  protected otp = new FormControl();
   protected randomOtp: Number;
+  
+  public email = new FormControl('',Validators.required);
+  public otp = new FormControl();
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     console.log('login')
     let vara = new Vara("#text_box",`https://raw.githubusercontent.com/akzhy/Vara/master/fonts/Parisienne/Parisienne.json`,[{
-      text:"Penpal Letters", // String, text to be shown
+      text:"Lafazo", // String, text to be shown
       fontSize: 40, // Number, size of the text
       strokeWidth: 2.5, // Width / Thickness of the stroke
       color: "#fff700", // Color of the text

@@ -1,12 +1,14 @@
-<app-select placeholder="Interest" multiple="true"
- [control]="selectControl" [options]="interests" key="id" value="interest">
-</app-select>
-<app-description placeholder="I Am Awesome" [control]="description"></app-description>
-
-  <div>
-   <p class="bold">Privacy Settings</p>
+<div class="lg-padding-left lg-padding-right">
+  <app-select placeholder="Interest" multiple="true"
+  [control]="selectControl" [options]="interests" key="id" value="interest">
+  </app-select>
+  <app-description placeholder="I Am Awesome" [control]="description"></app-description>
+</div>
+<hr class="lg-margin-top">
+  <div class="lg-padding-left lg-padding-right">
+   <p class="bold font-16">Privacy Settings</p>
   <app-toggle [control]="displayPicture" label="Display Picture"></app-toggle>
-  <app-toggle [control]="show_description" label="Description"></app-toggle>
+  <app-toggle [control]="showDescription" label="Description"></app-toggle>
   <app-toggle [control]="dob" label="Age"></app-toggle>
   <app-toggle [control]="showInterests" label="Interest"></app-toggle>
   </div>

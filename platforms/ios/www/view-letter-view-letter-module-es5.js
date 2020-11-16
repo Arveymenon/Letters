@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Sent By: </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card class=\"letter\">\n    <div [innerHTML]=\"message | safeHtml\"></div>\n  </ion-card>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Sent By: Arvey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card class=\"letter\">\n    <div [innerHTML]=\"message | safeHtml\"></div>\n  </ion-card>\n</ion-content>\n";
       /***/
     },
 
@@ -150,17 +150,17 @@
       /* harmony import */
 
 
-      var src_app_Shared_Pipes_SafeHtmlPipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-      /*! src/app/Shared/Pipes/SafeHtmlPipe/safe-html.pipe */
-      "./src/app/Shared/Pipes/SafeHtmlPipe/safe-html.pipe.ts");
+      var src_app_Shared_Pipes_SafeHtmlPipe_safe_html_pipe_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! src/app/Shared/Pipes/SafeHtmlPipe/safe-html-pipe.module */
+      "./src/app/Shared/Pipes/SafeHtmlPipe/safe-html-pipe.module.ts");
 
       var ViewLetterPageModule = function ViewLetterPageModule() {
         _classCallCheck(this, ViewLetterPageModule);
       };
 
       ViewLetterPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _view_letter_routing_module__WEBPACK_IMPORTED_MODULE_5__["ViewLetterPageRoutingModule"]],
-        declarations: [_view_letter_page__WEBPACK_IMPORTED_MODULE_6__["ViewLetterPage"], src_app_Shared_Pipes_SafeHtmlPipe_safe_html_pipe__WEBPACK_IMPORTED_MODULE_7__["SafeHtmlPipe"]]
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _view_letter_routing_module__WEBPACK_IMPORTED_MODULE_5__["ViewLetterPageRoutingModule"], src_app_Shared_Pipes_SafeHtmlPipe_safe_html_pipe_module__WEBPACK_IMPORTED_MODULE_7__["SafeHtmlPipeModule"]],
+        declarations: [_view_letter_page__WEBPACK_IMPORTED_MODULE_6__["ViewLetterPage"]]
       })], ViewLetterPageModule);
       /***/
     },
@@ -181,7 +181,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = ".letter {\n  padding: 20px;\n  margin: 30px;\n  border-radius: 10px;\n  box-shadow: 0px 0px 8px 0px #c3c3c3;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbGV0dGVycy92aWV3LWxldHRlci92aWV3LWxldHRlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxhQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBQ0EsbUNBQUE7QUFDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2xldHRlcnMvdmlldy1sZXR0ZXIvdmlldy1sZXR0ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxldHRlcntcbiAgICBwYWRkaW5nOiAyMHB4O1xuICAgIG1hcmdpbjogMzBweDtcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICAgIGJveC1zaGFkb3c6IDBweCAwcHggOHB4IDBweCAjYzNjM2MzO1xufSJdfQ== */";
+      __webpack_exports__["default"] = ".letter {\n  background: url('letter_bg.jpg') 0 0/100% 100% no-repeat;\n  padding: 20px;\n  margin: 30px;\n  border-radius: 10px;\n  box-shadow: 0px 0px 8px 0px #c3c3c3;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbGV0dGVycy92aWV3LWxldHRlci92aWV3LWxldHRlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSx3REFBQTtFQUNBLGFBQUE7RUFDQSxZQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQ0FBQTtBQUFKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbGV0dGVycy92aWV3LWxldHRlci92aWV3LWxldHRlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGV0dGVye1xuICAgIC8vIC0tYmFja2dyb3VuZDogdmFyKC0taW9uLWNvbG9yLWxpZ2h0KTtcbiAgICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi8uLi9hc3NldHMvYmFja2dyb3VuZF9pbWFnZXMvbGV0dGVyX2JnLmpwZ1wiKSAwIDAvMTAwJSAxMDAlIG5vLXJlcGVhdDtcbiAgICBwYWRkaW5nOiAyMHB4O1xuICAgIG1hcmdpbjogMzBweDtcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICAgIGJveC1zaGFkb3c6IDBweCAwcHggOHB4IDBweCAjYzNjM2MzO1xufSJdfQ== */";
       /***/
     },
 

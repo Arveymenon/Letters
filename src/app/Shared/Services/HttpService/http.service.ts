@@ -9,7 +9,7 @@ import { environment } from './../../../../environments/environment'
   providedIn: 'root'
 })
 export class HttpService {
-  private url = environment.basePath;
+  private url = 'BasePath';
   private headers =
     new HttpHeaders({
       'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ import { ToastService } from 'src/app/Shared/Services/Toast/toast.service';
   styleUrls: ["./profile-management.page.scss"]
 })
 export class ProfileManagementPage implements OnInit, OnDestroy {
-  protected UserDetails: {
+  public UserDetails: {
     handle: string;
     name: string;
     mobile: string;
@@ -20,7 +20,7 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
     valid: boolean
   };
   
-  protected ProfileDetails: {
+  public ProfileDetails: {
     interests: Array<string>;
     description: string;
     displayPicture: boolean;
@@ -28,14 +28,16 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
     dob: boolean;
     showInterests: boolean;
   };
+  public userLoggedIn: boolean = false;
   
   private userId: string
+  
   constructor(
+    protected authService: AuthService,
     private platform: Platform,
     private route: ActivatedRoute,
     private router: Router,
     private httpService: HttpService,
-    private authService: AuthService,
     private toast: ToastService
   ) {
     this.platform.backButton.subscribe((res) => {
@@ -46,6 +48,9 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
   
   ngOnInit() {
     console.log('profile-management')
+    if(this.router.url == '/home/profile'){
+      this.userLoggedIn = true
+    }
     // this.route.queryParams.subscribe((values) => {
     //   console.log(values.id);
     //   if(values.id){
@@ -73,10 +78,10 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
     console.log('Destroyed')
   }
 
-  // setValues(user){
-  //   console.log(user)
-  //   this.UserDetails.name = user.name
-  // }
+  logout(){
+    this.authService.logout()
+  }
+
   setUserDetails(details) {
     this.UserDetails = details;
   }
@@ -113,10 +118,10 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
       description: this.ProfileDetails.description,
       dob: this.ProfileDetails.dob,
       interests: this.ProfileDetails.interests,
-      show_display_picture: this.ProfileDetails.displayPicture,
-      show_description: this.ProfileDetails.showDescription,
-      show_age: this.ProfileDetails.dob,
-      show_interests: this.ProfileDetails.showInterests,
+      showDisplayPicture: this.ProfileDetails.displayPicture,
+      showDescription: this.ProfileDetails.showDescription,
+      showAge: this.ProfileDetails.dob,
+      showInterests: this.ProfileDetails.showInterests,
     };
     console.log(reqBody)
     // this.httpService.post("customer/update", reqBody).subscribe((res: any)=> {

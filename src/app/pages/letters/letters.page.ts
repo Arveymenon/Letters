@@ -10,8 +10,7 @@ import { AuthService } from 'src/app/Shared/Services/Authentication/auth.service
 export class LettersPage implements OnInit {
   items = [1, 2, 3, 4, 5];
   constructor(
-    private router: Router,
-    private auth: AuthService
+    public router: Router
   ) {
     console.log(this.letters)
   }

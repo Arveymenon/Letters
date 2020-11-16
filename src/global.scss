@@ -45,8 +45,13 @@
 
 .ion-page {
     .slide-over{
-        box-shadow: 0px 0px 20px 0px #404040;
         border-radius: 10px 10px 0 0;
+        box-shadow: 0px 0px 20px 0px #404040;
+    }
+
+    hr{
+        margin: 10px 30px;
+        background: #ffffff59;
     }
     
     ion-button{
@@ -56,12 +61,29 @@
         --color: var(--ion-color-warning);
     }
 
+    .font-16{ font-size: 1.6em }
+
+    .width-100{width: 100%}
+    .width-75{width: 75%}
+    .width-50{width: 50%}
+    .width-25{width: 25%}
+
     .height-100{height: 100%}
     .height-75{height: 75%}
     .height-50{height: 50%}
     .height-25{height: 25%}
 
     .margin-none{ margin: 0 }
+
+    .margin-top{ margin-top: 8px }
+    .margin-bottom{ margin-bottom: 8px }
+    .margin-left{ margin-left: 8px }
+    .margin-right{ margin-right: 8px }
+
+    .lg-margin-top{ margin-top: 16px }
+    .lg-margin-bottom{ margin-bottom: 16px }
+    .lg-margin-left{ margin-left: 16px }
+    .lg-margin-right{ margin-right: 16px }
 
     .padding-none{ padding: 0}
     
@@ -70,9 +92,19 @@
     .sm-padding-left{padding-left: 4px;}
     .sm-padding-right{padding-right: 4px;}
     .sm-padding-bottom{padding-bottom: 4px;}
+    
+    .padding{padding: 8px;}
+    .padding-top{padding-top: 8px;}
+    .padding-left{padding-left: 8px;}
+    .padding-right{padding-right: 8px;}
+    .padding-bottom{padding-bottom: 8px;}
 
     .padding{padding: 8px;}
     .lg-padding{padding: 16px;}
+    .lg-padding-top{padding-top: 16px;}
+    .lg-padding-left{padding-left: 16px;}
+    .lg-padding-right{padding-right: 16px;}
+    .lg-padding-bottom{padding-bottom: 16px;}
 
     .bold{
         font-weight: bold;

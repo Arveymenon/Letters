@@ -9,9 +9,7 @@ import { ToastService } from 'src/app/Shared/Services/Toast/toast.service';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss'],
 })
-export class UserDetailsComponent implements 
-  OnInit
-   {
+export class UserDetailsComponent implements OnInit {
 
   valid_handle: boolean
   valid_mobile: boolean

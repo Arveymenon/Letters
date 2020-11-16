@@ -326,7 +326,8 @@ let AuthService = class AuthService {
                 email: user.email,
                 mobile: user.mobile,
             };
-            this.storage.set("user", User).then(() => {
+            this.storage.set("user", user).then(() => {
+                this.user = user;
                 resolve(User);
             });
         });
@@ -351,7 +352,13 @@ let AuthService = class AuthService {
         this.storage.clear();
         this.router.navigateByUrl('login');
     }
-    get getUser() { return this.user; }
+    get getUser() {
+        return new Promise((res, rej) => {
+            this.storage.get('user').then((user) => {
+                res(user);
+            });
+        });
+    }
 };
 AuthService.ctorParameters = () => [
     { type: _HttpService_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] },
@@ -382,15 +389,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../../environments/environment */ "./src/environments/environment.ts");
-
 
 
 
 let HttpService = class HttpService {
     constructor(http) {
         this.http = http;
-        this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].basePath;
+        this.url = 'BasePath';
         this.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -482,7 +487,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        redirectTo: 'home/letters/write',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {
@@ -550,8 +555,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/__ivy_ngcc__/fesm2015/ionic-storage.js");
-/* harmony import */ var _Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Shared/Services/Authentication/auth.service */ "./src/app/Shared/Services/Authentication/auth.service.ts");
-
 
 
 
@@ -559,14 +562,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-    constructor(platform, splashScreen, statusBar, storage, authService) {
+    constructor(platform, splashScreen, statusBar, storage) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.storage = storage;
-        this.authService = authService;
         this.initializeApp();
-        this.authService.authenticate();
+        // this.authService.authenticate()
         this.storage.clear();
     }
     initializeApp() {
@@ -580,8 +582,7 @@ AppComponent.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
     { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
     { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
-    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] },
-    { type: _Shared_Services_Authentication_auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"] }
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] }
 ];
 AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -622,6 +623,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/image-picker/ngx */ "./node_modules/@ionic-native/image-picker/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/base64/ngx */ "./node_modules/@ionic-native/base64/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/animations.js");
+
 
 
 
@@ -651,7 +654,8 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
-            _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["IonicStorageModule"].forRoot()
+            _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["IonicStorageModule"].forRoot(),
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__["BrowserAnimationsModule"]
         ],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],

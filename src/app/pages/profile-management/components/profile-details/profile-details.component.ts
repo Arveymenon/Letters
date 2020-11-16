@@ -16,32 +16,35 @@ export class ProfileDetailsComponent implements OnInit {
     displayPicture: boolean,
     dob: boolean,
   }
- @Output('setProfileDetails') setProfileDetails = new EventEmitter()
+ @Output('setProfileDetails') setUserProfileDetails = new EventEmitter()
 
-  protected interests = [
+  public interests = [
     { id: '5f72f14d6e321073dea34abd', interest: "Skipping" },
     { id: '5f72f16b6e321073dea34abe', interest: "Jogging" },
     { id: '5f72f17e6e321073dea34abf', interest: "Sleeping" },
   ];
 
-  protected description = new FormControl('')
+  public description = new FormControl('')
   
-  protected selectControl = new FormControl('', Validators.required)
+  public selectControl = new FormControl('', Validators.required)
   // Toggle Form Controls
-  protected displayPicture = new FormControl(false)
-  protected show_description = new FormControl(true)
-  protected dob = new FormControl(false)
-  protected showInterests = new FormControl(true)
+  public displayPicture = new FormControl(false)
+  public showDescription = new FormControl(true)
+  public dob = new FormControl(false)
+  public showInterests = new FormControl(true)
 
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService
+  ) {
+  }
 
   ngOnInit() {
     this.values = {
       interests: this.selectControl.value,
       description: this.description.value,
       showInterests: this.showInterests.value,
-      showDescription: this.show_description.value,
+      showDescription: this.showDescription.value,
       displayPicture: this.displayPicture.value,
       dob: this.dob.value,
     }
@@ -49,12 +52,12 @@ export class ProfileDetailsComponent implements OnInit {
       console.log(user)
       if(user){
         this.selectControl.setValue(user.interests)
-
         this.description.setValue(user.description)
-        this.displayPicture.setValue(user.show_display_picture)
-        this.show_description.setValue(user.show_description)
-        this.dob.setValue(user.show_age)
-        this.showInterests.setValue(user.show_interests)
+
+        this.displayPicture.setValue(user.showDisplayPicture)
+        this.showDescription.setValue(user.showDescription)
+        this.dob.setValue(user.showAge)
+        this.showInterests.setValue(user.showInterests)
       }
     })
   }
@@ -63,14 +66,14 @@ export class ProfileDetailsComponent implements OnInit {
     this.values.interests = this.selectControl.value
     this.values.description = this.description.value
     this.values.showInterests = this.showInterests.value
-    this.values.showDescription = this.show_description.value
+    this.values.showDescription = this.showDescription.value
     this.values.displayPicture = this.displayPicture.value
     this.values.dob = this.dob.value
     this.updateValues()
   }
 
   updateValues(){
-    this.setProfileDetails.emit(this.values)
+    this.setUserProfileDetails.emit(this.values)
   }
 
 }

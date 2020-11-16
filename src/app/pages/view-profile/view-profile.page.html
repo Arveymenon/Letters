@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title class="ion-text-center">{{ user.name }}</ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="ellipsis-vertical-sharp" (click)="showOptions()"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
@@ -11,3 +16,8 @@
   <app-user-details [user]="user"></app-user-details>
   <!-- About User -->
 </ion-content>
+<!-- <ion-footer>
+  <ion-button color="warning" expand="full">
+      Remove From Friend List
+    </ion-button>
+  </ion-footer> -->

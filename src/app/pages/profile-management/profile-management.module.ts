@@ -19,14 +19,23 @@ import { SelectComponent } from './components/input-components/select/select.com
 import { ToggleComponent } from './components/input-components/toggle/toggle.component';
 import { DatePickerComponent } from './components/input-components/date-picker/date-picker.component';
 import { DescriptionComponent } from './components/input-components/description/description.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     ProfileManagementPageRoutingModule,
+
+    FormsModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatIconModule
   ],
   providers: [
     ImagePicker,

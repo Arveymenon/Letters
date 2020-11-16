@@ -17,6 +17,7 @@ import { AuthService } from './Shared/Services/Authentication/auth.service';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,8 @@ import { Base64 } from '@ionic-native/base64/ngx';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,

@@ -14,8 +14,8 @@
   <div *ngIf="user.interests">
     <ion-icon color="warning" name="globe-outline"></ion-icon> <span color="warning" *ngFor="let interest of user.interests" class="interest">{{ interest }}</span>
   </div>
-  <div *ngIf="user.description">
-    <p>Subject: About User</p>
+  <div *ngIf="user.description" class="lg-margin-top">
+    <p>Subject: About Arvey</p>
     <p>{{ user.description }}</p>
   </div><br>
 </div>

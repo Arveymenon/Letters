@@ -1,3 +1,33 @@
-<ion-select [multiple]='multiple' (ionChange)="change($event)" [placeholder]="placeholder" [formControl]="control">
+<!-- <ion-select [multiple]='multiple' (ionChange)="change($event)" [placeholder]="placeholder" [formControl]="control">
   <ion-select-option *ngFor="let option of options" [value]="option[key]">{{ option[value] }}</ion-select-option>
-</ion-select>
+</ion-select> -->
+<div>
+  <h3 class="margin-none">Interests</h3>
+  </div>
+<mat-form-field class="example-chip-list width-100">
+  <mat-chip-list #chipList aria-label="Fruit selection">
+    <!-- [ngClass]="i%2 == 0 ? 'color1' : i%3 == 0 ? 'color2': i%5 ? 'color4' : 'color5'" -->
+    <mat-chip
+    color="primary"
+      *ngFor="let option of selectedOptions; let i = index"
+      class="background"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(option.interest)">
+      {{option.interest}}
+      <mat-icon matChipRemove *ngIf="removable" name="cancel">cancel</mat-icon>
+    </mat-chip>
+    <input
+      #fruitInput
+      [formControl]="search"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let fruit of filteredOptions | async" [value]="fruit">
+      {{fruit.interest}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

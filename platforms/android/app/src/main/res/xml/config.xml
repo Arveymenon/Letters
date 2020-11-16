@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.lafazo.letter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Base64">
         <param name="android-package" value="com.badrit.Base64.Base64Plugin" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
@@ -14,8 +17,12 @@
         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="Camera">
-        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="SQLitePlugin">
+        <param name="android-package" value="io.sqlc.SQLitePlugin" />
     </feature>
     <feature name="CDVIonicKeyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
@@ -26,7 +33,7 @@
     <feature name="IonicWebView">
         <param name="android-package" value="com.ionicframework.cordova.webview.IonicWebView" />
     </feature>
-    <name>MyApp</name>
+    <name>LafaZo</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -62,6 +69,7 @@
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="webView" value="com.ionicframework.cordova.webview.IonicWebViewEngine" />
+    <preference name="android-targetSdkVersion" value="29" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
