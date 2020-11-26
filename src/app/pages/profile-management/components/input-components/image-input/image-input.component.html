@@ -5,10 +5,10 @@
 
   <!-- Existing Image -->
   <div class="image" *ngIf="image" (click)='uploadImageOption()'>
-      <img [src]="image">
+      <img [src]="image | safeSrcUrl">
     </div>
     <!-- Input Image -->
-  <div class="image" *ngIf="!image">
+  <div class="image" *ngIf="!image" (click)='uploadImageOption()'>
       <input type='file' class="hidden">
       <ion-icon name='camera' class="camera-icon"></ion-icon>
       <div class="add-icon-parent">

@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { CameraOptions, Camera } from '@ionic-native/camera/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { File } from '@ionic-native/file/ngx';
-import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
-import { IFile } from '@ionic-native/file'
 
 @Injectable({
   providedIn: 'root',
@@ -84,46 +82,51 @@ export class MediaUploadService {
           mediaType: this.camera.MediaType.PICTURE
         }
         console.log('Select pic')
-        this.camera.getPicture(options).then((imageData) => {
+        this.camera.getPicture(options).then(async (imageData) => {
           console.log(imageData);
-          let imageURIs = imageData;
-          let base64 = this.pathToBase64(imageURIs);
-          let base64_2 = 'data:image/jpeg;base64,' + imageData,
-              filename = new Date(),
-              blob = this.dataURLtoBlob(base64,filename)
+          await this.pathToBase64(imageData).then(async path=>{
+              let base64 = path
+              console.log(base64)
+              let localFilePath = imageData
+              let filename = new Date()
 
-          console.log(filename, imageURIs)
-          console.log(blob)
+              console.log(filename, imageData)
 
-            resolve({blob,base64_2, base64, filename})
-            }, (err) => {
+              await resolve({localFilePath, base64, filename})
+
+            });
+          }, (err) => {
               console.log(err);
           });
         });
     }
 
     pathToBase64(filePath){
-      this.base64.encodeFile(filePath).then((base64File: string) => {
-        console.log('pathToBase64')
-        console.log(base64File);
-        return base64File
-      }, (err) => {
-        console.log(err);
-      });
+      return new Promise((res,rej)=>{
+        this.base64.encodeFile(filePath).then((base64File: string) => {
+          console.log('pathToBase64')
+          console.log(base64File);
+          res(base64File)
+        }, (err) => {
+          rej(err)
+        });
+      })
     }
 
     // base64 to File
     dataURLtoBlob(base64, filename) {
-      var arr = base64.split(','),
-      mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]), 
-      n = bstr.length, 
-      u8arr = new Uint8Array(n);
-      
-      while(n--){
-          u8arr[n] = bstr.charCodeAt(n);
+      if(base64){
+        var arr = base64.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), 
+        n = bstr.length, 
+        u8arr = new Uint8Array(n);
+        
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], filename);
       }
-      return new Blob([u8arr], filename);
     }
     
 

@@ -1,30 +1,32 @@
-import { CommonModule } from '@angular/common';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouteReuseStrategy } from '@angular/router';
-import { Camera } from '@ionic-native/camera/ngx';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { AppModule } from 'src/app/app.module';
+import { CommonModule } from "@angular/common";
+import { HttpClient, HttpHandler } from "@angular/common/http";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterTestingModule } from "@angular/router/testing";
+import { Camera } from "@ionic-native/camera/ngx";
+import { ImagePicker } from "@ionic-native/image-picker/ngx";
+import { IonicModule } from "@ionic/angular";
+import { IonicStorageModule } from "@ionic/storage";
+import { ProfileDetailsComponent } from "./components/profile-details/profile-details.component";
+import { UserDetailsComponent } from "./components/user-details/user-details.component";
 
-import { ProfileManagementPage } from './profile-management.page';
+import { ProfileManagementPage } from "./profile-management.page";
 
-describe('ProfileManagementPage', () => {
+describe("ProfileManagementPage", () => {
   let component: ProfileManagementPage;
   let fixture: ComponentFixture<ProfileManagementPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileManagementPage ],
+      declarations: [ProfileManagementPage],
       imports: [
         FormsModule,
         IonicModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        IonicStorageModule.forRoot(),
+        RouterTestingModule,
       ],
-      providers:[
-        ImagePicker,
-        Camera
-      ]
+      providers: [ImagePicker, Camera, HttpClient, HttpHandler, Storage],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProfileManagementPage);
@@ -32,7 +34,7 @@ describe('ProfileManagementPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

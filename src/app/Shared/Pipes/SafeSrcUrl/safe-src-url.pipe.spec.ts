@@ -1,10 +1,10 @@
 import { DomSanitizer } from '@angular/platform-browser';
-import { SafeHtmlPipe } from './safe-html.pipe';
+import { SafeSrcUrlPipe } from './safe-src-url.pipe';
 
-describe('SafeHtmlPipe', () => {
+describe('SafeSrcUrlPipe', () => {
   it('create an instance', () => {
     let sanitizer: DomSanitizer
-    const pipe = new SafeHtmlPipe(sanitizer);
+    const pipe = new SafeSrcUrlPipe(sanitizer);
     expect(pipe).toBeTruthy();
   });
 });

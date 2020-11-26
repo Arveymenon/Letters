@@ -23,6 +23,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
+import { SafeSrcUrlPipe } from 'src/app/Shared/Pipes/SafeSrcUrl/safe-src-url.pipe';
 
 @NgModule({
   imports: [
@@ -35,7 +36,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    
+    SafeSrcUrlPipe
   ],
   providers: [
     ImagePicker,

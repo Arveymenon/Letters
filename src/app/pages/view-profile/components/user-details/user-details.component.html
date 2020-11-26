@@ -1,20 +1,20 @@
 <div class="ion-padding slide-over height-100 userDetails">
   <div>
-    <p><b style="color: var(--ion-color-warning)">#</b>   {{ user.handle }}</p>
+    <p><b style="color: var(--ion-color-warning)">#</b>   {{ user?.handle }}</p>
   </div>
   <div>
-    <p><ion-icon color="warning" name="at-outline"></ion-icon>   {{ user.email }}</p>
+    <p><ion-icon color="warning" name="at-outline"></ion-icon>   {{ user?.email }}</p>
   </div>
   <div>
-    <p><ion-icon color="warning" name="call-outline"></ion-icon>  {{ user.mobile }}</p>
+    <p><ion-icon color="warning" name="call-outline"></ion-icon>  {{ user?.mobile }}</p>
   </div>
-  <div *ngIf="user.dob">
-    <p><ion-icon color="warning" name="calendar-outline"></ion-icon> {{ getBirthday(user.dob) }}</p>
+  <div *ngIf="user?.dob">
+    <p><ion-icon color="warning" name="calendar-outline"></ion-icon> {{ getBirthday(user?.dob) }}</p>
   </div>
-  <div *ngIf="user.interests">
-    <ion-icon color="warning" name="globe-outline"></ion-icon> <span color="warning" *ngFor="let interest of user.interests" class="interest">{{ interest }}</span>
+  <div *ngIf="user?.interests">
+    <ion-icon color="warning" name="globe-outline"></ion-icon> <span color="warning" *ngFor="let interest of user?.interests" class="interest">{{ interest }}</span>
   </div>
-  <div *ngIf="user.description" class="lg-margin-top">
+  <div *ngIf="user?.description" class="lg-margin-top">
     <p>Subject: About Arvey</p>
     <p>{{ user.description }}</p>
   </div><br>

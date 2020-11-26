@@ -23,11 +23,19 @@ export class UserDetailsComponent implements OnInit {
   }
   @Output('setUserDetails') setUserDetails = new EventEmitter()
 
-  public handle = new FormControl()
+  public handle = new FormControl
   public name = new FormControl
   public mobile = new FormControl
   public dob = new FormControl
-  constructor(private http: HttpService, private toast: ToastService, private authService: AuthService) { }
+  constructor(private http: HttpService, private toast: ToastService, private authService: AuthService) { 
+    // this.values = {
+    //   name: '',
+    //   handle: '',
+    //   mobile: '',
+    //   dob: '',
+    //   valid: true
+    // }
+  }
 
   ngOnInit() {
     console.log(this.values)
@@ -50,10 +58,13 @@ export class UserDetailsComponent implements OnInit {
   }
 
   ngDoCheck() {
-    this.values.handle = this.handle.value
-    this.values.name = this.name.value
-    this.values.mobile = this.mobile.value
-    this.values.dob = this.dob.value
+    this.values = {
+      handle: this.handle.value,
+      name: this.name.value,
+      mobile: this.mobile.value,
+      dob: this.dob.value,
+      valid: true
+    }
     this.updateValues()
   }
   

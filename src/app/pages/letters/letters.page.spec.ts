@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
+import { SafeHtmlPipe } from 'src/app/Shared/Pipes/SafeHtmlPipe/safe-html.pipe';
 
 import { LettersPage } from './letters.page';
 
@@ -9,8 +11,14 @@ describe('LettersPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LettersPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [ 
+        LettersPage,
+        SafeHtmlPipe
+       ],
+      imports: [
+        IonicModule.forRoot(),
+        RouterTestingModule
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LettersPage);

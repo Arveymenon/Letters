@@ -27,8 +27,10 @@ export class ImageInputComponent implements OnInit {
           icon: 'camera',
           handler: () => {
             console.log('select from camera')
-            this.mediaUpload.selectFromCamera().then(image=>{
-              console.log(image)
+            this.mediaUpload.selectFromCamera().then(async (image: any)=>{
+              await console.log(image)
+              this.image = image.base64
+              return image
             })
           }
         },{

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, ViewChild, OnInit, Output, ElementRef, OnChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
+// import { MatAutocomplete } from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -43,12 +43,20 @@ export class SelectComponent implements OnInit, OnChanges {
   // options: string[] =;
 
   @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  // @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor() {
     this.filteredOptions = this.search.valueChanges.pipe(
       startWith(null),
-      map((fruit: string | null) => fruit ? this._filter(fruit) : this.options.slice()));
+      map((fruit: string | null) =>{
+        if(fruit){
+          return this._filter(fruit)
+        }else{
+          if(this.options){
+            return this.options.slice()
+          }
+        }
+      }));
   }
 
   ngOnChanges(){
@@ -79,7 +87,8 @@ export class SelectComponent implements OnInit, OnChanges {
     }
   }
 
-  selected(event: MatAutocompleteSelectedEvent): void {
+  // selected(event: MatAutocompleteSelectedEvent): void {
+  selected(event: any): void {
     // console.log(event.option)
     // console.log(event.option.value)
     const option = this.selectedOptions.find(o=>o.interest == event.option.value.interest);

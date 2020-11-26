@@ -18,9 +18,10 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Base64 } from '@ionic-native/base64/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SafeSrcUrlPipe } from './Shared/Pipes/SafeSrcUrl/safe-src-url.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SafeSrcUrlPipe],
   entryComponents: [],
   imports: [
     BrowserModule,

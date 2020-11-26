@@ -17,15 +17,17 @@
       {{option.interest}}
       <mat-icon matChipRemove *ngIf="removable" name="cancel">cancel</mat-icon>
     </mat-chip>
+    <!-- [matAutocomplete]="auto" -->
     <input
       #fruitInput
       [formControl]="search"
-      [matAutocomplete]="auto"
       [matChipInputFor]="chipList"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
       (matChipInputTokenEnd)="add($event)">
   </mat-chip-list>
-  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+  <!-- #auto="matAutocomplete" -->
+  <mat-autocomplete 
+   (optionSelected)="selected($event)">
     <mat-option *ngFor="let fruit of filteredOptions | async" [value]="fruit">
       {{fruit.interest}}
     </mat-option>
