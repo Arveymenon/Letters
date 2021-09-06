@@ -7,20 +7,26 @@ import { ToastService } from '../../Services/Toast/toast.service';
 })
 export class EmailStringValidatorDirective {
 
-  @Input('formControl') control: FormControl
+  @Input('formControl') control: FormControl;
 
-  private string: RegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+  // For email
+  private string: RegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+  // For letters, numbers and space
+  // private string: RegExp = /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/; 
   constructor(private toast: ToastService) { }
-  
-  @HostListener('change', ["$event"]) emailValidation(event: KeyboardEvent){
-    if(!this.string.test(event.target['value'])){
-      if(this.control){
-          this.control.setErrors({'invalid': true})
+
+  @HostListener('keyup', ['$event']) emailValidation(event: any){
+    if (!this.string.test(event.target.value) && event.target.value.length > 0){
+      if (this.control){
+          this.control.setErrors({invalid: true});
       }
-      this.toast.simpletoast('Kindly Provide A Valid Email ID')
+      this.toast.simpletoast('Kindly Provide A Valid Email ID');
+      return false
     }else{
-      if(this.control)
-        this.control.setErrors(null)
+      if (this.control) {
+        this.control.setErrors(null);
+      }
     }
   }
 }

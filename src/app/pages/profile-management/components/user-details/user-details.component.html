@@ -1,8 +1,8 @@
-<!-- <ion-content> -->
+<ion-content>
   <app-input (change)="checkIfExists(2)" icon="at-outline" placeholder="Handle" [control]='handle'></app-input>
   <app-input icon="person-outline" placeholder="Name" [control]='name'></app-input>
-  <app-input (change)="checkIfExists(1)" icon="phone-portrait-outline" placeholder="Mobile" [control]='mobile'></app-input>
+  <app-input (change)="checkIfExists(1)" icon="phone-portrait-outline" type="number" placeholder="Mobile" [control]='mobile'></app-input>
   <app-date-picker icon="calendar-outline" placeholder="Date Of Birth" [control]='dob'></app-date-picker>
 
-  <!-- <app-input placeholder="Desciption" [control]='description'></app-input> -->
-<!-- </ion-content> -->
+  <app-input placeholder="Desciption" [control]='description'></app-input>
+</ion-content>

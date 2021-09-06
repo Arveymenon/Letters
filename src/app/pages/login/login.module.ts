@@ -19,7 +19,7 @@ import { EmailStringValidatorDirective } from 'src/app/Shared/Directives/EmailSt
     LoginPageRoutingModule,
     ReactiveFormsModule,
   ],
-  providers:[
+  providers: [
     HttpClientModule
   ],
   declarations: [

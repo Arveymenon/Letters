@@ -17,7 +17,7 @@ import { HomePageRoutingModule } from './home-routing.module';
   declarations: [
     HomePage
   ],
-  providers:[
+  providers: [
   ]
 })
 export class HomePageModule {}

@@ -1,5 +1,9 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { Router, RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { IonicStorageModule } from '@ionic/storage';
+import { AuthService } from 'src/app/Shared/Services/Authentication/auth.service';
 
 import { ProfileDetailsComponent } from './profile-details.component';
 
@@ -10,7 +14,11 @@ describe('ProfileDetailsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ProfileDetailsComponent ],
-      imports: []
+      imports: [
+        IonicStorageModule.forRoot(),
+        RouterTestingModule
+      ],
+      providers: [AuthService, HttpClient, HttpHandler, Storage]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProfileDetailsComponent);

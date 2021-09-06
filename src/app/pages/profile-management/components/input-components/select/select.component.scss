@@ -1,0 +1,27 @@
+.mat-form-field-infix:focus{
+    outline: #000000;
+}
+// color: var(--ion-color-warning) !important;
+.background{
+    background-color: #000 !important;   
+    color: #fff !important;
+    mat-icon{
+        color: rgb(255 247 52) !important;
+        opacity: 0.4 !important;
+    }
+}
+.color1{
+    background-color: #800000 !important; 
+}
+.color2{
+    background-color: #090080 !important;
+}
+.color3{
+    background-color: #000000 !important;
+}
+.color4{
+    background-color: #750080 !important;
+}
+.color5{
+    background-color: #378a00 !important;
+}

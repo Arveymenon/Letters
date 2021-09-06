@@ -5,11 +5,11 @@
         <ion-icon color="dark" slot="icon-only" name="log-out-outline"></ion-icon>
       </ion-button>
     </ion-buttons> -->
-    <ion-title>
+    <ion-title [ngClass]="userLoggedIn ? 'margin-left' : ''">
       Profile Manage
     </ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="authService.logout()">
+    <ion-buttons slot="end" *ngIf="userLoggedIn">
+      <ion-button (click)="logout()">
         <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -20,7 +20,7 @@
 <ion-content>
     <ion-row>        
         <!-- user details -->
-        <ion-col size=6>
+        <ion-col size='6' class='padding-left'>
           <app-user-details [value]='UserDetails' (setUserDetails)="setUserDetails($event)"></app-user-details>
         </ion-col>
         <!-- Privacy -->
@@ -32,10 +32,11 @@
         </ion-col>
       </ion-row>
 
+      <hr>
       <!-- About User -->
-      <ion-row class="lg-padding">
-        <p *ngIf="UserDetails"><b>Subject:</b> Hey {{UserDetails.handle}}! Tell Us Something about yourself</p>
-          <app-profile-details (setProfileDetails)="setProfileDetails($event)"></app-profile-details>
+      <ion-row class="">
+        <p *ngIf="UserDetails" class="lg-padding-left lg-padding-right" ><b class="font-16">Subject: </b> <span>Hey {{UserDetails.handle}}! Tell Us Something about yourself</span></p>
+        <app-profile-details (setProfileDetails)="setProfileDetails($event)"></app-profile-details>
       </ion-row>
         
 </ion-content>

@@ -9,6 +9,7 @@ import { ViewProfilePageRoutingModule } from './view-profile-routing.module';
 import { ViewProfilePage } from './view-profile.page';
 import { UserImageComponent } from './components/user-image/user-image.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserOptionsComponent } from './components/user-options/user-options.component';
 
 @NgModule({
   imports: [
@@ -17,8 +18,11 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     IonicModule,
     ViewProfilePageRoutingModule,
   ],
-  declarations: 
-  [ViewProfilePage,
+  declarations:
+  [
+    ViewProfilePage,
+    UserOptionsComponent,
+
     UserImageComponent,
     UserDetailsComponent
   ]

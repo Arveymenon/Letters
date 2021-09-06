@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/Shared/Services/Authentication/auth.service
 })
 export class HomePage implements OnInit{
 
-  protected user: User
+  protected user: User;
   constructor(
     protected auth: AuthService,
     private router: Router
@@ -19,16 +19,16 @@ export class HomePage implements OnInit{
     }
 
   ngOnInit(){
-    console.log('Home')
+    console.log('Home');
   }
 
   goToProfile(){
-    this.router.navigateByUrl('/home/profile')
+    this.router.navigateByUrl('/home/profile');
   }
   goToLetters(){
-    this.router.navigateByUrl('/home/letters')
+    this.router.navigateByUrl('/home/letters');
   }
   goToFriends(){
-    this.router.navigateByUrl('/home/friends')
+    this.router.navigateByUrl('/home/friends');
   }
 }
