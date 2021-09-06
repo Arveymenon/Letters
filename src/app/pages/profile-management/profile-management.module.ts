@@ -53,9 +53,11 @@ import { SafeSrcUrlPipe } from 'src/app/Shared/Pipes/SafeSrcUrl/safe-src-url.pip
     ToggleComponent,
     DatePickerComponent,
     DescriptionComponent,
-
+    
     ProfileDetailsComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+
+    SafeSrcUrlPipe
   ]
 })
 export class ProfileManagementPageModule {}

@@ -5,7 +5,6 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { MediaUploadService } from './media-upload.service';
 
 describe('MediaUploadService', () => {
-  
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [Camera, ImagePicker]
@@ -14,7 +13,7 @@ describe('MediaUploadService', () => {
   });
   
   it('should be created', () => {
-    let service = MediaUploadService;
+    const service = MediaUploadService;
     expect(service).toBeTruthy();
   });
 });

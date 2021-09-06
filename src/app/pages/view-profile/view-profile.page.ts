@@ -19,10 +19,10 @@ export class ViewProfilePage implements OnInit {
     dob: new Date(),
     interests: ['Lovey', 'Dovey'],
     description: 'kaafi data',
-  }
-  
+  };
+
   constructor(private popoverController: PopoverController) { }
-  
+
   ngOnInit() {
   }
 

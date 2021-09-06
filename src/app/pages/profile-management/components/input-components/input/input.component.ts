@@ -11,7 +11,7 @@ export class InputComponent implements OnInit{
   @Input('control') control: FormControl;
   @Input('type') type: string;
   @Input('icon') icon: string;
-  
+
   constructor() { }
 
   ngOnInit() {

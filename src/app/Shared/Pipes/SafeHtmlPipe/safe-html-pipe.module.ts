@@ -6,7 +6,7 @@ import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
   declarations: [SafeHtmlPipe],
-  exports:[SafeHtmlPipe],
+  exports: [SafeHtmlPipe],
   imports: [
     CommonModule
   ]

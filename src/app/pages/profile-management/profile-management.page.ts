@@ -1,15 +1,15 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Platform } from "@ionic/angular";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { User } from 'src/app/Shared/Models/user';
 import { AuthService } from 'src/app/Shared/Services/Authentication/auth.service';
-import { HttpService } from "src/app/Shared/Services/HttpService/http.service";
+import { HttpService } from 'src/app/Shared/Services/HttpService/http.service';
 import { ToastService } from 'src/app/Shared/Services/Toast/toast.service';
 
 @Component({
-  selector: "app-profile-management",
-  templateUrl: "./profile-management.page.html",
-  styleUrls: ["./profile-management.page.scss"]
+  selector: 'app-profile-management',
+  templateUrl: './profile-management.page.html',
+  styleUrls: ['./profile-management.page.scss']
 })
 export class ProfileManagementPage implements OnInit, OnDestroy {
   public UserDetails: {
@@ -45,41 +45,22 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
     });
     this.platform.backButton.isStopped = true;
   }
-  
-  ngOnInit() {
-    console.log('profile-management')
-    if(this.router.url == '/home/profile'){
-      this.userLoggedIn = true
-    }
-    // this.route.queryParams.subscribe((values) => {
-    //   console.log(values.id);
-    //   if(values.id){
-    //     this.userId = values.id
-        
-    //     // values.id -> ID passed in params who details shall be shown on the front end
-    //     // this.authService.getUser -> Current User
 
-    //     if(values.id == this.authService.getUser._id){
-    //       this.httpService.get('customer/get/'+values.id).subscribe((res: any)=>{
-    //         if(res.error == false){
-    //           this.setValues(res.response)
-    //         }
-    //       })
-    //     } else {
-    //       this.setValues(this.authService.getUser)
-    //     }
-    //   }
-    //   else
-    //     this.authService.authenticate()
-    // });
+  ngOnInit() {
+    console.log('profile-management');
+    if (this.router.url == '/home/profile'){
+      this.userLoggedIn = true;
+    }
   }
 
   ngOnDestroy(){
-    console.log('Destroyed')
+    console.log('Destroyed');
   }
 
   logout(){
-    this.authService.logout()
+    this.authService.logout().subscribe(status => {
+      console.log(status);
+    });
   }
 
   setUserDetails(details) {
@@ -90,26 +71,26 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
   }
 
   updateProfile() {
-    if(!this.UserDetails.handle){
-      this.toast.simpletoast('Kindly Provide A User Handle')
-      return
+    if (!this.UserDetails.handle){
+      this.toast.simpletoast('Kindly Provide A User Handle');
+      return;
     }
-    if(!this.UserDetails.mobile){
-      this.toast.simpletoast('Kindly Provide A Mobile Number')
-      return
+    if (!this.UserDetails.mobile){
+      this.toast.simpletoast('Kindly Provide A Mobile Number');
+      return;
     }
-    if(this.ProfileDetails.interests.length == 0){
-      this.toast.simpletoast('Kindly Select Atleast One Interest')
-      return
+    if (this.ProfileDetails.interests.length == 0){
+      this.toast.simpletoast('Kindly Select Atleast One Interest');
+      return;
     }
-    if(!this.UserDetails.valid){
-      this.toast.simpletoast('Kindly Provide Valid Mobile Number And Handle')
-      return
+    if (!this.UserDetails.valid){
+      this.toast.simpletoast('Kindly Provide Valid Mobile Number And Handle');
+      return;
     }
 
     console.log(this.UserDetails);
     console.log(this.ProfileDetails);
-    let reqBody = {
+    const reqBody = {
       id: this.userId,
       mobile: this.UserDetails.mobile,
       email: null,
@@ -123,11 +104,11 @@ export class ProfileManagementPage implements OnInit, OnDestroy {
       showAge: this.ProfileDetails.dob,
       showInterests: this.ProfileDetails.showInterests,
     };
-    console.log(reqBody)
+    console.log(reqBody);
     // this.httpService.post("customer/update", reqBody).subscribe((res: any)=> {
     //   if(res.error == false){
-        this.authService.setUser(reqBody)
-        this.router.navigateByUrl('home')
+    this.authService.setUser(reqBody);
+    this.router.navigateByUrl('home');
     //   }
     // });
   }

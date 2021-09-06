@@ -10,7 +10,7 @@ describe('DatePickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         DatePickerComponent
        ],
       imports: [IonicModule.forRoot(),

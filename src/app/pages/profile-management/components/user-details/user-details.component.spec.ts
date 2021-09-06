@@ -16,7 +16,7 @@ describe('UserDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         UserDetailsComponent,
 
         InputComponent,
@@ -29,7 +29,7 @@ describe('UserDetailsComponent', () => {
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ],
-      providers:[
+      providers: [
         HttpClient, HttpHandler,
       ]
     }).compileComponents();

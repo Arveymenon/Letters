@@ -14,7 +14,7 @@ describe('ViewLetterPage', () => {
       imports: [
         IonicModule.forRoot()
       ],
-      providers:[
+      providers: [
         SafeHtmlPipe
       ]
     }).compileComponents();

@@ -10,12 +10,13 @@ export class InputComponent implements OnInit {
   @Input('placeholder') placeholder: String;
   @Input('value') value: String;
   @Input('control') control: FormControl;
-  
+
   constructor() { }
 
   ngOnInit() {
-    if(this.value)
-      this.control.setValue(this.value)
+    if (this.value) {
+      this.control.setValue(this.value);
+    }
   }
 
 }

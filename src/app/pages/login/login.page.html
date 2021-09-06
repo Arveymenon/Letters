@@ -6,7 +6,7 @@
       </div>
   </div>
   <div class="login-form">
-      <app-input *ngIf="loginStage == 1" [control]="email" placeholder="Email"></app-input>
+      <app-input appEmailStringValidator *ngIf="loginStage == 1" [control]="email" placeholder="Email"></app-input>
       <app-input *ngIf="loginStage == 2" [control]="otp" max="6" placeholder="OTP"></app-input>
       
       <ion-button (click)="login()" expand="block">{{ loginStage == 1 ? 'Send OTP' : 'Submit' }}</ion-button>

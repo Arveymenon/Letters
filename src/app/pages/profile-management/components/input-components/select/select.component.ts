@@ -26,12 +26,9 @@ export class SelectComponent implements OnInit, OnChanges {
   }
 
   change(ev){
-    console.log(ev)
-    this.changed.emit(ev.value)
+    console.log(ev);
+    this.changed.emit(ev.value);
   }
-
-
-
   visible = true;
   selectable = true;
   removable = true;

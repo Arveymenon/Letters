@@ -26,25 +26,25 @@ export class ImageInputComponent implements OnInit {
           text: 'Camera',
           icon: 'camera',
           handler: () => {
-            console.log('select from camera')
-            this.mediaUpload.selectFromCamera().then(async (image: any)=>{
-              await console.log(image)
-              this.image = image.base64
-              return image
-            })
+            console.log('select from camera');
+            this.mediaUpload.selectFromCamera().then(async (image: any) => {
+              await console.log(image);
+              this.image = image.base64;
+              return image;
+            });
           }
-        },{
+        }, {
           text: 'Gallery',
           icon: 'images',
           handler: () => {
-            console.log('select from gallery')
-            this.mediaUpload.selectFromGallery().then(image=>{
+            console.log('select from gallery');
+            this.mediaUpload.selectFromGallery().then(image => {
               // A base 64 image
-              console.log(image)
-            })
+              console.log(image);
+            });
             // this.selectFromGallery();
           }
-        },{
+        }, {
           text: 'Cancel',
           role: 'cancel',
           icon: 'close',
@@ -54,6 +54,6 @@ export class ImageInputComponent implements OnInit {
         }
       ]
     });
-    await actionSheet.present();
+  await actionSheet.present();
   }
 }

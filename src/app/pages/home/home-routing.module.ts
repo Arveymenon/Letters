@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     component: HomePage,
     children: [
-      { path:'', redirectTo: 'letters', pathMatch: 'full' },
+      { path: '', redirectTo: 'letters', pathMatch: 'full' },
       {
         path: 'letters',
         loadChildren: () => import('./../letters/letters.module')

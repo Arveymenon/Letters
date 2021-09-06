@@ -11,8 +11,8 @@ import { ToastService } from 'src/app/Shared/Services/Toast/toast.service';
 })
 export class UserDetailsComponent implements OnInit {
 
-  valid_handle: boolean
-  valid_mobile: boolean
+  valid_handle: boolean;
+  valid_mobile: boolean;
 
   @Input('value') values: {
     handle: string,
@@ -20,14 +20,14 @@ export class UserDetailsComponent implements OnInit {
     mobile: string,
     dob: string,
     valid: boolean
-  }
-  @Output('setUserDetails') setUserDetails = new EventEmitter()
+  };
+  @Output('setUserDetails') setUserDetails = new EventEmitter();
 
-  public handle = new FormControl
-  public name = new FormControl
-  public mobile = new FormControl
-  public dob = new FormControl
-  constructor(private http: HttpService, private toast: ToastService, private authService: AuthService) { 
+  public handle = new FormControl;
+  public name = new FormControl;
+  public mobile = new FormControl;
+  public dob = new FormControl;
+  constructor(private http: HttpService, private toast: ToastService, private authService: AuthService) {
     // this.values = {
     //   name: '',
     //   handle: '',
@@ -38,23 +38,23 @@ export class UserDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.values)
+    console.log(this.values);
     this.values = {
       name: '',
       handle: '',
       mobile: '',
       dob: '',
       valid: true
-    }
-    this.authService.getUser.then((user: any)=>{
-      if(user){
-        this.handle.setValue(user.handle)
-        this.name.setValue(user.name)
-        this.mobile.setValue(user.mobile)
-        this.dob.setValue(user.dob)
-        this.values.valid = true
+    };
+    this.authService.getUser.then((user: any) => {
+      if (user){
+        this.handle.setValue(user.handle);
+        this.name.setValue(user.name);
+        this.mobile.setValue(user.mobile);
+        this.dob.setValue(user.dob);
+        this.values.valid = true;
       }
-    })
+    });
   }
 
   ngDoCheck() {
@@ -64,36 +64,40 @@ export class UserDetailsComponent implements OnInit {
       mobile: this.mobile.value,
       dob: this.dob.value,
       valid: true
-    }
-    this.updateValues()
+    };
+    this.updateValues();
   }
-  
+
   checkIfExists(id){
-    let reqBody = {
+    const reqBody = {
       findBy: id,
       findText: id == 1 ? this.mobile.value : this.handle.value
-    }
-    this.http.post('customer/check',reqBody).subscribe((res: any)=>{
-      if(!res.error){
-        if(id == 1)
-          this.valid_mobile = true
-        else
-          this.valid_handle = true
+    };
+    this.http.post('customer/check', reqBody).subscribe((res: any) => {
+      if (!res.error){
+        if (id == 1) {
+          this.valid_mobile = true;
+        }
+        else {
+          this.valid_handle = true;
+        }
       }else{
         // TO BE SET FALSE
-          if(id == 1)
-            this.valid_mobile = true
-          else
-            this.valid_handle = true
-        this.toast.simpletoast(res.message)
+          if (id == 1) {
+            this.valid_mobile = true;
+          }
+          else {
+            this.valid_handle = true;
+          }
+          this.toast.simpletoast(res.message);
       }
-      
-      this.values.valid = this.valid_mobile && this.valid_handle ? true : false
-    })
+
+      this.values.valid = this.valid_mobile && this.valid_handle ? true : false;
+    });
   }
 
   updateValues(){
-    this.setUserDetails.emit(this.values)
+    this.setUserDetails.emit(this.values);
   }
 
 }

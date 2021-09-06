@@ -19,7 +19,7 @@ describe('ImageInputComponent', () => {
         FormsModule,
         ReactiveFormsModule
       ],
-      providers:[
+      providers: [
         MediaUploadService,
         ImagePicker,
         Camera,

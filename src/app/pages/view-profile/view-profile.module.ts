@@ -18,7 +18,7 @@ import { UserOptionsComponent } from './components/user-options/user-options.com
     IonicModule,
     ViewProfilePageRoutingModule,
   ],
-  declarations: 
+  declarations:
   [
     ViewProfilePage,
     UserOptionsComponent,

@@ -3,7 +3,7 @@ import { EmailStringValidatorDirective } from './email-string-validator.directiv
 
 describe('EmailStringValidatorDirective', () => {
   it('should create an instance', () => {
-    let toast: ToastService
+    let toast: ToastService;
     const directive = new EmailStringValidatorDirective(toast);
     expect(directive).toBeTruthy();
   });
